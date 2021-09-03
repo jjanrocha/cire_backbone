@@ -17,28 +17,41 @@ class User extends Authenticatable
      *
      * @var string[]
      */
+    /*
     protected $fillable = [
         'name',
         'email',
         'password',
     ];
+    */
+    protected $fillable = ['re_usuario', 'nome', 'senha', 'email'];
+
+    protected $table = 'cire_backbone_usuarios';
+
+    //Sobrescrever o método que retorna o nome do campo password
+    public function getAuthPassword(){  
+        return $this->senha;
+    }
 
     /**
      * The attributes that should be hidden for serialization.
      *
      * @var array
      */
+    /*
     protected $hidden = [
         'password',
         'remember_token',
     ];
-
+    */
     /**
      * The attributes that should be cast.
      *
      * @var array
      */
+    /*
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    */
 }
