@@ -24,14 +24,15 @@
                                 <label for="re_usuario" class="col-sm-3 col-form-label">RE:</label>
                                 <div class="col-md-7">
                                     <input type="text" name="re_usuario" id="re_usuario" value="{{ old('re_usuario') }}"
-                                        class="form-control">
+                                        class="form-control @if($errors->has('re_usuario')) is-invalid @endif">
                                     {{ $errors->has('re_usuario') ? $errors->first('re_usuario') : '' }}
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="senha" class="col-sm-3 col-form-label">Senha:</label>
                                 <div class="col-md-7">
-                                    <input type="password" name="password" id="senha" class="form-control">
+                                    <input type="password" name="password" id="senha"
+                                        class="form-control @if($errors->has('password')) is-invalid @endif">
                                     {{ $errors->has('password') ? $errors->first('password') : '' }}
                                 </div>
                             </div>
