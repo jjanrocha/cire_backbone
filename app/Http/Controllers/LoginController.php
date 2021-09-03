@@ -11,19 +11,29 @@ class LoginController extends Controller
 
         $credentials = $request->only('re_usuario', 'password');
 
+        //Definição das regras de validação
+        $rules = [
+            're_usuario' => 'required',
+            'password' => 'required',
+        ];
+
+        //Mensagens de erro
+        $feedback = [
+            're_usuario.required' => 'O campo RE é de preenchimento obrigatório',
+            'password.required' => 'O campo senha é de preenchimento obrigatório',
+        ];
+
+        //Validação do formulário
+        $request->validate($rules, $feedback);
+
+        //Autenticação do usuário
         if (Auth::attempt($credentials)) { 
             return 'Usuário autenticado';
         } else {
-            return 'Falha na autenticação';
+            return back()->withErrors([
+                'password' => 'RE e/ou senha inválido(s)',
+            ])->withInput($request->except('password'));
         }
 
-        /*
-        if(Auth::attempt(['re_usuario' => $re_usuario, 'senha' => $senha])){
-            return 'Usuário autenticado';
-        } else {
-            return 'Usuário não autenticado';
-        }
-        */
-        //dd($credentials);
     }
 }
