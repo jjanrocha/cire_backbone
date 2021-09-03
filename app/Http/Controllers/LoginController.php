@@ -7,19 +7,17 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    public function authentication(Request $request) {
-
-        $credentials = $request->only('re_usuario', 'password');
+    public function authenticate(Request $request) {
 
         //Definição das regras de validação
         $rules = [
-            're_usuario' => 'required',
+            'id' => 'required',
             'password' => 'required',
         ];
 
         //Mensagens de erro
         $feedback = [
-            're_usuario.required' => 'O campo RE é de preenchimento obrigatório',
+            'id.required' => 'O campo RE é de preenchimento obrigatório',
             'password.required' => 'O campo senha é de preenchimento obrigatório',
         ];
 
@@ -27,10 +25,9 @@ class LoginController extends Controller
         $request->validate($rules, $feedback);
 
         //Autenticação do usuário
-        if (Auth::attempt($credentials)) { 
-            //$request->session()->regenerate();
-            //return redirect()->intended('dashboard');
-            return 'Usuário autenticado';
+        if (Auth::attempt(['id' => $request->id, 'password' => $request->password])) {
+            $request->session()->regenerate();
+            return redirect()->intended();
 
         } else {
             return back()->withErrors([
@@ -38,5 +35,13 @@ class LoginController extends Controller
             ])->withInput($request->except('password'));
         }
 
+    }
+    
+    public function logout(Request $request) {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('index');
     }
 }

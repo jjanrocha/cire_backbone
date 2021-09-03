@@ -24,7 +24,7 @@ class User extends Authenticatable
         'password',
     ];
     */
-    protected $fillable = ['re_usuario', 'nome', 'senha', 'nivel', 'email'];
+    protected $fillable = ['id', 'nome', 'senha', 'nivel', 'email'];
 
     protected $table = 'cire_backbone_usuarios';
 

@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
     public function index() {
-        return view('login');
+        if (Auth::check()) {
+            return view('app.home');
+        } else {
+            return view('login');
+        }
     }
 }

@@ -2,7 +2,7 @@
 @section('title', 'Login')
 
 @section('content')
-<div class="background-login">
+<div class="background-gray90">
     <div class="container d-flex h-100">
         <div class="row justify-content-center row align-self-center w-100">
             <div class="col-md-8 mx-auto">
@@ -21,11 +21,11 @@
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
                             <div class="form-group row">
-                                <label for="re_usuario" class="col-sm-3 col-form-label">RE:</label>
+                                <label for="id" class="col-sm-3 col-form-label">RE:</label>
                                 <div class="col-md-7">
-                                    <input type="text" name="re_usuario" id="re_usuario" value="{{ old('re_usuario') }}"
-                                        class="form-control @if($errors->has('re_usuario')) is-invalid @endif">
-                                    {{ $errors->has('re_usuario') ? $errors->first('re_usuario') : '' }}
+                                    <input type="text" name="id" id="id" value="{{ old('id') }}"
+                                        class="form-control @if($errors->has('id')) is-invalid @endif">
+                                    {{ $errors->has('id') ? $errors->first('id') : '' }}
                                 </div>
                             </div>
                             <div class="form-group row">
