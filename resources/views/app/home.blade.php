@@ -3,7 +3,15 @@
 
 @section('content')
 @include('layouts.header')
-<div class="background-gray90">
+@include('layouts.sidebar')
+
+<!-- conteúdo -->
+<div class="main" id="pagina">
+
+    <div class="container">
+        Alguma coisa
+    </div>
 
 </div>
+
 @endsection

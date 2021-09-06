@@ -13,7 +13,7 @@
                                 Login
                             </div>
                             <div class="col-4 d-flex justify-content-center">
-                                <img src="{{ asset('img/logo.png')}}">
+                                <img src="{{ asset('img/logo.png')}}" height="88" width="84">
                             </div>
                         </div>
                     </div>
@@ -22,17 +22,27 @@
                             @csrf
                             <div class="form-group row">
                                 <label for="id" class="col-sm-3 col-form-label">RE:</label>
-                                <div class="col-md-7">
-                                    <input type="text" name="id" id="id" value="{{ old('id') }}"
-                                        class="form-control @if($errors->has('id')) is-invalid @endif">
+                                <div class="col-md-8">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                        </div>
+                                        <input type="text" name="id" id="id" value="{{ old('id') }}"
+                                            class="form-control @if($errors->has('id')) is-invalid @endif">
+                                    </div>
                                     {{ $errors->has('id') ? $errors->first('id') : '' }}
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="senha" class="col-sm-3 col-form-label">Senha:</label>
-                                <div class="col-md-7">
-                                    <input type="password" name="password" id="senha"
-                                        class="form-control @if($errors->has('password')) is-invalid @endif">
+                                <div class="col-md-8">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                        </div>
+                                        <input type="password" name="password" id="senha"
+                                            class="form-control @if($errors->has('password')) is-invalid @endif">
+                                    </div>
                                     {{ $errors->has('password') ? $errors->first('password') : '' }}
                                 </div>
                             </div>
@@ -50,5 +60,9 @@
         </div>
     </div>
 </div>
-
+<style>
+    html {
+        height: 100%;
+    }
+    </style>
 @endsection

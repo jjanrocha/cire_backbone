@@ -1,7 +1,7 @@
 <header>
     <!-- Barra de Navegação -->
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-    <a class="navbar-brand" href="{{ route('index') }}">CIRE Backbone</a>
+        <a class="navbar-brand" href="{{ route('index') }}">CIRE Backbone</a>
         <!-- Menu -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-target">
             <span class="navbar-toggler-icon"></span>
