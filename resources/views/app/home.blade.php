@@ -2,16 +2,18 @@
 @section('title', 'CIRE Backbone')
 
 @section('content')
-@include('layouts.header')
+
 @include('layouts.sidebar')
 
-<!-- conteúdo -->
+<!-- Conteúdo -->
 <div class="main" id="pagina">
 
     <div class="container">
-        Alguma coisa
+        <p>Olá, {{Auth::user()->nome}} </p>
     </div>
 
 </div>
+
+@include('layouts.footer')
 
 @endsection

@@ -18,10 +18,14 @@ body {
 .nav-side-menu {
   overflow: auto;
   background-color: #2e353d;
-  position: absolute;
+  position: fixed;
   width: 220px;
   height: 100%;
   color: #e1ffff;
+}
+
+.brand a{
+  text-decoration: none;
 }
 
 .nav-side-menu .brand {

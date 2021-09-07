@@ -14,11 +14,10 @@ class CreateTableCireBackboneUsuarios extends Migration
     public function up()
     {
         Schema::create('cire_backbone_usuarios', function (Blueprint $table) {
-            $table->string('id', 120)->primary()->unique();
+            $table->bigInteger('id')->primary()->unique();
             $table->string('nome', 120);
-            $table->string('senha', 120);
-            $table->string('nivel', 10);
-            $table->string('email')->nullable();
+            $table->string('password', 120);
+            $table->string('nivel', 20);
             $table->timestamps();
             $table->softDeletes();
         });

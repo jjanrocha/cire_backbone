@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UsuarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +24,9 @@ Route::get('/', [HomeController::class, 'index'])->name('index');
 
 Route::post('/login',[LoginController::class, 'authenticate'])->name('login');
 Route::post('/logout',[LoginController::class, 'logout'])->name('logout');
+
+/* CRUD de usuários */
+Route::get('/usuarios', [UsuarioController::class, 'index'])->name('usuarios.index')->middleware('auth');
+Route::get('/usuarios/create', [UsuarioController::class, 'create'])->name('usuarios.create')->middleware('auth');
+Route::post('/usuarios/store', [UsuarioController::class, 'store'])->name('usuarios.store')->middleware('auth');
+Route::get('/usuarios/{user}', [UsuarioController::class, 'edit'])->name('usuarios.edit')->middleware('auth');

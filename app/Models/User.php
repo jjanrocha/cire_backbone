@@ -24,14 +24,9 @@ class User extends Authenticatable
         'password',
     ];
     */
-    protected $fillable = ['id', 'nome', 'senha', 'nivel', 'email'];
+    protected $fillable = ['id', 'nome', 'password', 'nivel', 'email'];
 
     protected $table = 'cire_backbone_usuarios';
-
-    //Sobrescrever o método que retorna o nome do campo password
-    public function getAuthPassword(){  
-        return $this->senha;
-    }
 
     /**
      * The attributes that should be hidden for serialization.

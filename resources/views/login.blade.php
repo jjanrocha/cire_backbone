@@ -1,5 +1,5 @@
 @extends('layouts.basico')
-@section('title', 'Login')
+@section('title', 'CIRE Backbone - Login')
 
 @section('content')
 <div class="background-gray90">
@@ -27,8 +27,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-user"></i></span>
                                         </div>
-                                        <input type="text" name="id" id="id" value="{{ old('id') }}"
-                                            class="form-control @if($errors->has('id')) is-invalid @endif">
+                                        <input type="text" name="id" id="id" value="{{ old('id') }}" class="form-control @if($errors->has('id')) is-invalid @endif">
                                     </div>
                                     {{ $errors->has('id') ? $errors->first('id') : '' }}
                                 </div>
@@ -40,8 +39,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-lock"></i></span>
                                         </div>
-                                        <input type="password" name="password" id="senha"
-                                            class="form-control @if($errors->has('password')) is-invalid @endif">
+                                        <input type="password" name="password" id="senha" class="form-control @if($errors->has('password')) is-invalid @endif">
                                     </div>
                                     {{ $errors->has('password') ? $errors->first('password') : '' }}
                                 </div>
@@ -64,5 +62,9 @@
     html {
         height: 100%;
     }
-    </style>
+
+</style>
+
+@include('layouts.footer')
+
 @endsection
