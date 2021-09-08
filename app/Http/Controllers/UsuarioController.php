@@ -9,8 +9,15 @@ use App\Models\User;
 class UsuarioController extends Controller
 {
     public function index() {
+        return view('app.users.index');
+    }
+
+    public function listarUsuarios() {
         $usuarios = User::all();
-        return view('app.users.index', ['usuarios' => $usuarios]);
+
+        $json_data = array('data' => $usuarios);
+        return response()->json($json_data);
+        //echo json_encode($usuarios);
     }
 
     public function create() {
@@ -49,17 +56,15 @@ class UsuarioController extends Controller
         $usuario->nivel = $request->nivel;
         $usuario->save();
 
-        return redirect()->route('usuarios.edit', ['user' => $request->id]);
+        return redirect()->route('usuarios.show', ['user' => $request->id]);
     }
 
-    /*
-    public function show() {
-        //
-    }
-    */
-
-    public function edit(Request $request, User $user) {
+    public function show(User $user) {
         dd($user->getAttributes());
+    }
+    
+    public function edit(Request $request, User $user) {
+        //
     }
 
     public function update() {

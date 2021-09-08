@@ -16,7 +16,7 @@
         </div>
 
         <div id="btn-voltar" class="mb-3">
-            <a href="{{route('usuarios.index')}} " type="button" class="btn btn-secondary">Voltar</a>
+            <a href="{{route('usuarios.index')}} ">Voltar</a>
         </div>
 
         <form action="{{route('usuarios.store')}}" method="POST">
@@ -52,7 +52,7 @@
 
             <button type="submit" id="btnEnviar" class="btn btn-success my-1">Confirmar</button>
             <button type="reset" id="btnReset" class="btn btn-danger my-1">Limpar</button>
-            
+
         </form>
 
     </div>
