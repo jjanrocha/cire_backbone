@@ -32,6 +32,18 @@
                                     {{ $errors->has('id') ? $errors->first('id') : '' }}
                                 </div>
                             </div>
+                            <div class="form-group row">
+                                <label for="senha" class="col-sm-3 col-form-label">Senha:</label>
+                                <div class="col-md-8">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                        </div>
+                                        <input type="password" name="password" id="senha" class="form-control @if($errors->has('password')) is-invalid @endif">
+                                    </div>
+                                    {{ $errors->has('password') ? $errors->first('password') : '' }}
+                                </div>
+                            </div>
                             <div class="form-group row mb-0">
                                 <div class="col-md-8 offset-md-5">
                                     <button type="submit" class="btn btn-secondary">
