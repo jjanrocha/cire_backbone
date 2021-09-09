@@ -1,5 +1,5 @@
 @extends('layouts.basico')
-@section('title', 'CIRE Backbone - Login')
+@section('title', $title)
 
 @section('content')
 <div class="background-gray90">

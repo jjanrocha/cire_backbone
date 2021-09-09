@@ -1,5 +1,5 @@
 @extends('layouts.basico')
-@section('title', 'CIRE Backbone')
+@section('title', $title)
 
 @section('content')
 

@@ -9,7 +9,7 @@ use App\Models\User;
 class UsuarioController extends Controller
 {
     public function index() {
-        return view('app.users.index');
+        return view('app.users.index', ['title' => 'Usuários']);
     }
 
     public function listarUsuarios() {
@@ -21,19 +21,19 @@ class UsuarioController extends Controller
     }
 
     public function create() {
-        return view('app.users.create');
+        return view('app.users.create', ['title' => 'Cadastro de Usuário']);
     }
 
     public function store(Request $request) {
 
-        //dd($request->all());
-
+        //Regras de validação do formulário
         $rules = [
             'nome' => 'required|min:3|max:120',
             'id' => 'required|digits_between:1,120|unique:cire_backbone_usuarios|',
             'nivel' => 'required|min:3|max:120',
         ];
 
+        //Mensagens de feedback da validação do formulário
         $feedback = [
             'nome.required' => 'O campo nome é de preenchimento obrigatório.',
             'nome.min' => 'O campo nome deve possuir no mímino :min caracteres.',
@@ -60,7 +60,9 @@ class UsuarioController extends Controller
     }
 
     public function show(User $user) {
-        dd($user->getAttributes());
+        //dd($user->getAttributes());
+        //dd($user->id);
+        return view('app.users.show', ['title' => 'Visualizar Usuário', 'usuario' => $user]);
     }
     
     public function edit(Request $request, User $user) {

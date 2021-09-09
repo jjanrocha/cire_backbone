@@ -9,9 +9,9 @@ class HomeController extends Controller
 {
     public function index() {
         if (Auth::check()) {
-            return view('app.home');
+            return view('app.home', ['title' => 'Início']);
         } else {
-            return view('login');
+            return view('login',['title' => 'Login']);
         }
     }
 }

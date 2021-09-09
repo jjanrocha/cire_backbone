@@ -1,5 +1,5 @@
 @extends('layouts.basico')
-@section('title', 'CIRE Backbone - Usuários')
+@section('title', $title)
 
 @section('content')
 
@@ -7,17 +7,18 @@
 
 <!-- Conteúdo -->
 <div class="main" id="pagina">
-
     <div class="container">
 
-        <div id="users-header">
-            <h4>Administração de Usuários</h4>
+        <div>
+            <h4>Usuários</h4>
             <hr>
         </div>
-        <div id="link-cadastrar-usuario" class="mb-3">
+        <div class="mb-3">
             <a type="button" href="{{route('usuarios.create')}}" class="btn btn-secondary"><i class="fas fa-user-plus"></i> Cadastrar novo usuário</a>
         </div>
-        <i class="fas fa-redo" id="btn-atualizar-lista-usuarios"></i></div>
+        <div>
+            <i class="fas fa-redo" id="atualizar-lista-usuarios" title="Atualizar"></i>
+        </div>
         <small>*Clique no RE para visualizar o usuário</small>
         <table id="lista_usuarios" class="table table-striped table-bordered" style="width:100%">
             <thead>
@@ -28,15 +29,14 @@
                 </tr>
             </thead>
         </table>
+        
     </div>
-</div>
-
 </div>
 
 @include('layouts.footer')
 <script type="text/javascript">
 
-    $('#btn-atualizar-lista-usuarios').on('click', function(){
+    $('#atualizar-lista-usuarios').on('click', function(){
         $('#lista_usuarios').DataTable().ajax.reload();
     });
 
