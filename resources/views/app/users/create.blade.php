@@ -16,7 +16,7 @@
         </div>
 
         <div id="btn-voltar" class="mb-3">
-            <a href="{{route('usuarios.index')}} ">Voltar</a>
+            <a type="button" href="{{route('usuarios.index')}}" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Voltar</a>
         </div>
 
         <form action="{{route('usuarios.store')}}" method="POST">

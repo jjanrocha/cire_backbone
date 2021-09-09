@@ -15,9 +15,9 @@
             <hr>
         </div>
         <div id="link-cadastrar-usuario" class="mb-3">
-            <a href="{{route('usuarios.create')}}">Cadastrar novo usuário</a>
+            <a type="button" href="{{route('usuarios.create')}}" class="btn btn-secondary"><i class="fas fa-user-plus"></i> Cadastrar novo usuário</a>
         </div>
-        <div id="btn-atualizar-lista-usuarios"><i class="fas fa-redo"></i></div>
+        <i class="fas fa-redo" id="btn-atualizar-lista-usuarios"></i></div>
         <small>*Clique no RE para visualizar o usuário</small>
         <table id="lista_usuarios" class="table table-striped table-bordered" style="width:100%">
             <thead>
