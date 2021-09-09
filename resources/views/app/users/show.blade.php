@@ -30,8 +30,8 @@
             </div>
         </div>
         <div>
-            <button type="button" class="btn btn-info"><i class="fas fa-edit"></i> Editar</button>
-            <button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Remover</button>
+            <button type="button" class="btn btn-info my-1"><i class="fas fa-edit"></i> Editar</button>
+            <button type="button" class="btn btn-danger my-1"><i class="fas fa-trash"></i> Remover</button>
         </div>
         <hr>
         <div>
