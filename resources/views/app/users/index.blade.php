@@ -36,6 +36,10 @@
 @include('layouts.footer')
 <script type="text/javascript">
 
+    $('#btn-atualizar-lista-usuarios').on('click', function(){
+        $('#lista_usuarios').DataTable().ajax.reload();
+    });
+
     $(document).ready(function() {
         $('#lista_usuarios').DataTable({
             "ajax": {
@@ -51,8 +55,8 @@
                     { "data": "id" },
                     { "data": "nome" },
                     { "data": "nivel" },
-                ],
-                "processing": true,
+            ],
+            "processing": true,
             language: {
                 url: '//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json'
             }
@@ -87,9 +91,7 @@
         })
     });
     
-    $('#btn-atualizar-lista-usuarios').on('click', function(){
-        //$('#lista_usuarios').DataTable().ajax.reload();
-    });
+    
     */
 
 </script>
