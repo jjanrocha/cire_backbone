@@ -52,9 +52,13 @@
                 },
             },
             "columns": [
-                    { "data": "id" },
-                    { "data": "nome" },
-                    { "data": "nivel" },
+                { "data": "id",
+                    "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                        $(nTd).html("<a href='usuarios/"+oData.id+"'>"+oData.id+"</a>");
+                    }
+                },
+                { "data": "nome" },
+                { "data": "nivel" },
             ],
             "processing": true,
             language: {
@@ -62,38 +66,6 @@
             }
         });
     });
-
-    /*
-    $(document).ready(function() {
-        $.ajax({
-            url: "{{ route('usuarios.listar') }}",
-            data: {
-                "_token": "{{ csrf_token() }}"
-            },
-            dataType: 'json',
-            type: 'post',
-            success: function(usuarios) {
-                $('#lista_usuarios').DataTable({
-                    data : usuarios.data, 
-                    columns: [
-                    {"data" : "id"},
-                    {"data" : "nome"},
-                    {"data" : "nivel"}            
-                    ],
-                    language: {
-                        url: '//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json'
-                    }
-                });
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-                alert(jqXHR)
-            }
-        })
-    });
-    
-    
-    */
-
 </script>
 
 @endsection
