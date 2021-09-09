@@ -35,6 +35,31 @@
 
 @include('layouts.footer')
 <script type="text/javascript">
+
+    $(document).ready(function() {
+        $('#lista_usuarios').DataTable({
+            "ajax": {
+                "data": {"_token": "{{ csrf_token() }}"},
+                "url": "{{route('usuarios.listar')}}",
+                "type": "POST",
+                "datatype": "JSON",
+                "dataSrc": function(usuarios) {
+                    return usuarios.data;
+                },
+            },
+            "columns": [
+                    { "data": "id" },
+                    { "data": "nome" },
+                    { "data": "nivel" },
+                ],
+                "processing": true,
+            language: {
+                url: '//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json'
+            }
+        });
+    });
+
+    /*
     $(document).ready(function() {
         $.ajax({
             url: "{{ route('usuarios.listar') }}",
@@ -61,28 +86,9 @@
             }
         })
     });
-    /*
-    $(document).ready(function() {
-        $.ajax({
-            url: "{{ route('usuarios.listar') }}",
-            data: {"_token": "{{ csrf_token() }}"},
-            type: 'post',
-            success: function(usuarios) {
-                console.log(usuarios)
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                console.log(jqXHR)
-            }
-        })
-        $('#lista_usuarios').DataTable({
-            language: {
-                url: '//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json'
-            }
-        });
-    });
-
+    
     $('#btn-atualizar-lista-usuarios').on('click', function(){
-        alert('teste')
+        //$('#lista_usuarios').DataTable().ajax.reload();
     });
     */
 
