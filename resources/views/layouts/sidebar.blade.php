@@ -13,7 +13,7 @@
                 <a href="{{route('dashboard.index')}}"><i class="fa fa-tachometer-alt sidebar-icon"></i> Dashboard</a>
             </li>
             <li data-toggle="collapse" data-target="#carimbos" class="collapsed">
-                <a href="#"><i class="fas fa-stamp sidebar-icon"></i> Carimbos <span class="arrow"><i class="fa fa-angle-down"></i></span></a>
+                <a><i class="fas fa-stamp sidebar-icon"></i> Carimbos <span class="arrow"><i class="fa fa-angle-down"></i></span></a>
             </li>
             <ul class="sub-menu collapse" id="carimbos">
                 <li><a href="{{route('carimbos.b2b.index')}}" id="b2b"><i class="fa fa-angle-right"></i> B2B <small><i class="fa fa-external-link"></i></small></a></li>

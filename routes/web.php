@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\CarimboController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +29,7 @@ Route::post('/logout',[LoginController::class, 'logout'])->name('logout');
 /* Links da sidebar */
 Route::get('/dashboard', function(){ return view('fallback.manutencao');})->name('dashboard.index');
 Route::get('/carimbos/b2b', function(){ return view('fallback.manutencao');})->name('carimbos.b2b.index');
-Route::get('/carimbos/controle', function(){ return view('fallback.manutencao');})->name('carimbos.controle.index');
+Route::get('/carimbos/controle', [CarimboController::class, 'carregarControle'])->name('carimbos.controle.index');
 Route::get('/carimbos/gerais', function(){ return view('fallback.manutencao');})->name('carimbos.gerais.index');
 Route::get('/carimbos/vivo2', function(){ return view('fallback.manutencao');})->name('carimbos.vivo2.index');
 Route::get('/links', function(){ return view('fallback.manutencao');})->name('links.index');
