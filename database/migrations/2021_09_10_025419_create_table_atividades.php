@@ -18,11 +18,11 @@ class CreateTableAtividades extends Migration
             $table->string('usuario_id', 250);
             $table->dateTime('data_hora');
             $table->string('numero_ta', 250);
-            $table->unsignedBigInteger('tipo_carimbo_id', 250);
+            $table->integer('tipo_atividade_id');
             $table->string('carimbo', 250);
 
             $table->foreign('usuario_id')->references('id')->on('cire_backbone_usuarios');
-            $table->foreign('tipo_carimbo_id')->references('id')->on('cire_backbone_tipos_atividades');
+            $table->foreign('tipo_atividade_id')->references('id')->on('cire_backbone_tipos_atividades');
         });
     }
 

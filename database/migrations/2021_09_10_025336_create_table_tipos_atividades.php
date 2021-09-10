@@ -15,9 +15,9 @@ class CreateTableTiposAtividades extends Migration
     {
         Schema::create('cire_backbone_tipos_atividades', function (Blueprint $table) {
             $table->id();
-            $table->string('funcao', 120);
-            $table->string('descricao', 250);
-            $table->string('via_telegram', 3);
+            $table->string('categoria', 120);
+            $table->string('tipo_carimbo', 250);
+            $table->string('via_telegram', 3)->nullable();
         });
     }
 
