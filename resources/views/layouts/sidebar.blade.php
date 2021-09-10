@@ -17,16 +17,13 @@
             </li>
             <ul class="sub-menu collapse" id="carimbos">
                 <li><a href="#" id="controle"><i class="fa fa-angle-right"></i> Controle </a></li>
+                <li><a href="#" id="b2b"><i class="fa fa-angle-right"></i> B2B <small><i class="fa fa-external-link"></i></small></a></li>
                 <li><a href="#" id="gerais"><i class="fa fa-angle-right"></i> Gerais <small><i class="fa fa-external-link"></i></small></a></li>
                 <li><a href="#" id="vivo2"><i class="fa fa-angle-right"></i> Vivo2 <small><i class="fa fa-external-link"></i></small></a></li>
                 <li><a href="https://inmetacode.com.br/carimbo_swap/" target="blank" id="vivo2"><i class="fa fa-angle-right"></i> SWAP (abertura) <small><i class="fa fa-external-link"></i></small></a></li>
             </ul>
-            <li>
-                <a href="{{ route('usuarios.index') }}"><i class="fas fa-users sidebar-icon"></i> Usuários</a>
-            </li>
-            <li>
-                <a href="#"><i class="fas fa-link sidebar-icon"></i> Links</a>
-            </li>
+            <li><a href="{{ route('usuarios.index') }}"><i class="fas fa-users sidebar-icon"></i> Usuários</a></li>
+            <li><a href="#"><i class="fas fa-link sidebar-icon"></i> Links</a></li>
             <li>
                 <a href="javascript:logout.submit()"><i class="fas fa-sign-out-alt sidebar-icon"></i> Sair</a>
                 <form name="logout" method="post" action="{{ route('logout') }}">

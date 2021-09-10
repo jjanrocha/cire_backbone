@@ -54,7 +54,7 @@
                 </div>
             </div>
 
-            <button type="submit" id="btnEnviar" class="btn btn-success my-1">Salvar</button>
+            <button type="submit" id="btnEnviar" class="btn btn-success my-1"><i class="far fa-save"></i> Salvar</button>
 
         </form>
 
