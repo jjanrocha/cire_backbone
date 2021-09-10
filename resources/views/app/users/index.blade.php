@@ -53,8 +53,8 @@
                 , "url": "{{route('usuarios.listar')}}"
                 , "type": "POST"
                 , "datatype": "JSON"
-                , "dataSrc": function(usuarios) {
-                    return usuarios.data;
+                , "dataSrc": function(users) {
+                    return users.data;
                 }
             , }
             , "columns": [{

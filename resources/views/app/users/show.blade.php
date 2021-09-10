@@ -19,19 +19,19 @@
             {{Session::get('mensagem')}}
         @endif
         <div>
-            <b>Nome: </b>{{$usuario->nome}}
+            <b>Nome: </b>{{$user->nome}}
         </div>
 
         <div>
-            <b>RE: </b>{{$usuario->id}}
+            <b>RE: </b>{{$user->id}}
         </div>
 
         <div>
-            <b>Nível: </b>{{$usuario->nivel}}
+            <b>Nível: </b>{{$user->nivel}}
         </div>
 
         <div class="my-1">
-            <a type="button" href="{{route('usuarios.edit', ['user' => $usuario->id])}}" class="btn btn-info my-1"><i class="fas fa-edit"></i> Editar</a>
+            <a type="button" href="{{route('usuarios.edit', ['user' => $user->id])}}" class="btn btn-info my-1"><i class="fas fa-edit"></i> Editar</a>
             <button type="button" class="btn btn-danger my-1" data-toggle="modal" data-target="#modalDeleteUsuario"><i class="fas fa-trash"></i> Remover</button>
         </div>
         <hr>
@@ -49,8 +49,8 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        Tem certeza que deseja excluir o usuário de RE {{ $usuario->id }}?
-                        <form id="form_deletar_usuario" method="post" action="{{route('usuarios.delete', ['user' => $usuario->id])}}">
+                        Tem certeza que deseja excluir o usuário de RE {{ $user->id }}?
+                        <form id="form_deletar_usuario" method="post" action="{{route('usuarios.delete', ['user' => $user->id])}}">
                             @method('DELETE')
                             @csrf
                         </form>

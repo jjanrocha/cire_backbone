@@ -61,7 +61,7 @@ class UsuarioController extends Controller
 
     public function show(User $user) {
 
-        return view('app.users.show', ['title' => 'Visualizar Usuário', 'usuario' => $user]);
+        return view('app.users.show', ['title' => 'Visualizar Usuário', 'user' => $user]);
     }
     
     public function edit(User $user) {
@@ -91,7 +91,7 @@ class UsuarioController extends Controller
 
         $user->update($request->all());
 
-        return redirect()->route('usuarios.show', ['usuario' => $user->id]);
+        return redirect()->route('usuarios.show', ['user' => $user->id]);
     }
 
     public function destroy(User $user) {
