@@ -15,11 +15,14 @@ class CreateTableAtividades extends Migration
     {
         Schema::create('cire_backbone_atividades', function (Blueprint $table) {
             $table->id();
-            $table->string('id_usuario', 250);
+            $table->string('usuario_id', 250);
             $table->string('data_hora', 120);
             $table->string('numero_ta', 250);
-            $table->string('tipo_carimbo', 250);
+            $table->string('tipo_carimbo_id', 250);
             $table->string('carimbo', 250);
+
+            $table->foreign('usuario_id')->references('id')->on('cire_backbone_usuarios');
+            $table->foreign('tipo_carimbo_id')->references('id')->on('cire_backbone_usuarios');
         });
     }
 

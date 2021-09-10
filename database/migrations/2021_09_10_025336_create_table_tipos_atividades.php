@@ -17,6 +17,7 @@ class CreateTableTiposAtividades extends Migration
             $table->id();
             $table->string('funcao', 120);
             $table->string('descricao', 250);
+            $table->string('via_telegram', 3);
         });
     }
 
