@@ -51,7 +51,7 @@ class UsuarioController extends Controller
         $usuario = new User();
 
         $usuario->id = $request->id;
-        $usuario->nome = $request->nome;
+        $usuario->nome = mb_strtoupper($request->nome,"utf-8");
         $usuario->password = bcrypt($request->id);
         $usuario->nivel = $request->nivel;
         $usuario->save();
@@ -89,7 +89,10 @@ class UsuarioController extends Controller
 
         $validator = $request->validate($rules, $feedback);
 
-        $user->update($request->all());
+        $user->update([
+            'nome' => mb_strtoupper($request->nome,"utf-8"),
+            'nivel' => $request->nivel
+        ]);
 
         return redirect()->route('usuarios.show', ['user' => $user->id]);
     }
