@@ -34,4 +34,9 @@ Route::get('/usuarios/{user}', [UsuarioController::class, 'show'])->name('usuari
 Route::get('/usuarios/{user}/edit', [UsuarioController::class, 'edit'])->name('usuarios.edit')->middleware('auth');
 Route::put('/usuarios/{user}/update', [UsuarioController::class, 'update'])->name('usuarios.update')->middleware('auth');
 Route::delete('/usuarios/{user}/destroy', [UsuarioController::class, 'destroy'])->name('usuarios.delete')->middleware('auth');
+/* Fim do CRUD de usuários */
 
+//Fallback(tratar requisições a rotas inexistentes)
+Route::fallback(function () {
+    echo 'Rota acessada não existe. <a href="' . route('index') . '"> Clique aqui </a> para ir para página inicial';
+});
