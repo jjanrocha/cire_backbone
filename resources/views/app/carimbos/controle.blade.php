@@ -29,10 +29,17 @@
 
 
         <div id="form_controle_escalonamento_crise_" class="my-3">
-            <div>
-                <h6>Escalonamento CRISE</h6>
-            </div>
+            <b>Escalonamento CRISE</b>
             <form method="POST" action="#">
+                <div class="form-inline">
+                <input type="text" name="numero_ta" class="form-control" placeholder="Digite o TA">
+                    <select class="custom-select my-1 mr-sm-2 ml-md-1" name="nome_eps">
+                        <option selected>Selecione a EPS</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </div>
                 <div class="my-2">
                     <b>CIRE ATENTO</b>
                     <br>
