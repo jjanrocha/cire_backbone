@@ -75,8 +75,16 @@ class UsuarioController extends Controller
 
     public function destroy(User $user) {
 
-        $user->delete();
-        return redirect()->route('usuarios.index');
+        $usuario = $user->id;
+
+        if($user->delete()) {
+            $mensagem = "Usuário $usuario removido com sucesso";
+            return redirect()->route('usuarios.index')->with('mensagem', $mensagem);
+
+        } else {
+            $mensagem = "Erro na exclusão do $usuario";
+            return redirect()->route('usuarios.show', ['user' => $usuario])->with('mensagem', $mensagem);
+        }
     }
 
 }

@@ -16,6 +16,9 @@
         <div class="mb-3">
             <a type="button" href="{{route('usuarios.create')}}" class="btn btn-secondary"><i class="fas fa-user-plus"></i> Novo usuário</a>
         </div>
+        @if (Session::has('mensagem'))
+            {{Session::get('mensagem')}}
+        @endif
         <div>
             <i class="fas fa-redo" id="atualizar-lista-usuarios" title="Atualizar"></i>
         </div>
@@ -31,7 +34,7 @@
                 </thead>
             </table>
         </div>
-
+        
     </div>
 </div>
 

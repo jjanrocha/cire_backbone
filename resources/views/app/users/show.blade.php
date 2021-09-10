@@ -15,7 +15,9 @@
         <div class="mb-3">
             <a type="button" href="{{route('usuarios.index')}}" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Lista de Usuários</a>
         </div>
-
+        @if (Session::has('mensagem'))
+            {{Session::get('mensagem')}}
+        @endif
         <div>
             <b>Nome: </b>{{$usuario->nome}}
         </div>
