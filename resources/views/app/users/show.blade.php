@@ -31,7 +31,7 @@
         </div>
 
         <div class="my-1">
-            <button type="button" class="btn btn-info my-1"><i class="fas fa-edit"></i> Editar</button>
+            <a type="button" href="{{route('usuarios.edit', ['user' => $usuario->id])}}" class="btn btn-info my-1"><i class="fas fa-edit"></i> Editar</a>
             <button type="button" class="btn btn-danger my-1" data-toggle="modal" data-target="#modalDeleteUsuario"><i class="fas fa-trash"></i> Remover</button>
         </div>
         <hr>

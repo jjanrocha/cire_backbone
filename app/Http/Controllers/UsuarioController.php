@@ -60,17 +60,38 @@ class UsuarioController extends Controller
     }
 
     public function show(User $user) {
-        //dd($user->getAttributes());
-        //dd($user->id);
+
         return view('app.users.show', ['title' => 'Visualizar Usuário', 'usuario' => $user]);
     }
     
-    public function edit(Request $request, User $user) {
-        //
+    public function edit(User $user) {
+        
+        return view('app.users.edit', ['user' => $user, 'title' => 'Editar Usuário']);
     }
 
-    public function update() {
-        //
+    public function update(Request $request, User $user) {
+
+        //Regras de validação do formulário
+        $rules = [
+            'nome' => 'required|min:3|max:120',
+            'nivel' => 'required|min:3|max:120',
+        ];
+
+        //Mensagens de feedback da validação do formulário
+        $feedback = [
+            'nome.required' => 'O campo nome é de preenchimento obrigatório.',
+            'nome.min' => 'O campo nome deve possuir no mímino :min caracteres.',
+            'nome.max' => 'O campo nome deve possuir no máximo :max caracteres.',
+            'nivel.required' => 'O campo nível é de preenchimento obrigatório.',
+            'nivel.min' => 'Entrada inválida.',
+            'nivel.max' => 'Entrada inválida.',
+        ];
+
+        $validator = $request->validate($rules, $feedback);
+
+        $user->update($request->all());
+
+        return redirect()->route('usuarios.show', ['usuario' => $user->id]);
     }
 
     public function destroy(User $user) {
