@@ -35,9 +35,9 @@
                     <input type="text" name="numero_ta" class="form-control" placeholder="Digite o TA">
                     <select class="custom-select my-1 mr-sm-2 ml-md-1" name="nome_eps">
                         <option selected>Selecione a EPS</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        @foreach ($lista_contratadas as $contratada)
+                        <option value="{{$contratada['nome']}}">{{$contratada['nome']}}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="my-2">
