@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\CarimboController;
+use App\Http\Controllers\Carimbos\ControleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,11 @@ Route::get('/carimbos/gerais', function(){ return view('fallback.manutencao');})
 Route::get('/carimbos/vivo2', function(){ return view('fallback.manutencao');})->name('carimbos.vivo2.index');
 Route::get('/links', function(){ return view('fallback.manutencao');})->name('links.index');
 /* Fim dos links da sidebar */
+
+/* Carimbos */
+Route::post('/carimbos/controle/form_crise',[ControleController::class, 'carregarFormCrise'])->name('carimbos.controle.crise');
+
+/* Fim dos carimbos */
 
 /* CRUD de usuários */
 Route::get('/usuarios', [UsuarioController::class, 'index'])->name('usuarios.index')->middleware('auth');
