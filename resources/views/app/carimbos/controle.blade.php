@@ -28,6 +28,8 @@
             </div>
         </div>
 
+        <div id="teste"><div>
+
 
     </div>
 </div>
@@ -35,8 +37,20 @@
 @include('layouts.footer')
 
 <script>
-    $(document).on('click', '#ESCALONAMENTO_CRISE', function () {
-        //alert('teste')
+    $(document).on('click', '#ESCALONAMENTO_CRISE', function() {
+        $.ajax({
+            type: 'POST',
+            data: {"_token": "{{ csrf_token() }}"},
+            url: "{{route('formulario.controle.crise')}}",
+            success: function(data) {
+                $("#teste").html(data);
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                console.log("XHR",xhr);
+                console.log("status",textStatus);
+                console.log("Error in",errorThrown);
+            }
+        });
     })
 
 </script>

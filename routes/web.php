@@ -36,10 +36,9 @@ Route::get('/carimbos/vivo2', function(){ return view('fallback.manutencao');})-
 Route::get('/links', function(){ return view('fallback.manutencao');})->name('links.index');
 /* Fim dos links da sidebar */
 
-/* Carimbos */
-Route::post('/carimbos/controle/form_crise',[ControleController::class, 'carregarFormCrise'])->name('carimbos.controle.crise');
-
-/* Fim dos carimbos */
+/* Formulários de carimbos */
+Route::post('/carimbos/controle/form_crise',[ControleController::class, 'carregarFormCrise'])->name('formulario.controle.crise');
+/* Fim dos formulários de carimbos */
 
 /* CRUD de usuários */
 Route::get('/usuarios', [UsuarioController::class, 'index'])->name('usuarios.index')->middleware('auth');
