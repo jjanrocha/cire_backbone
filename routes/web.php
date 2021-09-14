@@ -22,8 +22,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 */
+/* Home (usuário autenticado ou não) */
 Route::get('/', [HomeController::class, 'index'])->name('index');
 
+/* Rotas de autenticação e logout */
 Route::post('/login',[LoginController::class, 'authenticate'])->name('login');
 Route::post('/logout',[LoginController::class, 'logout'])->name('logout');
 
@@ -41,7 +43,7 @@ Route::post('/carimbos/controle/formularios/controle_crise',[ControleController:
 /* Fim dos formulários de carimbos */
 
 /* Insert de carimbos */
-
+Route::post('/carimbos/controle/formularios/controle_crise/insert',[ControleController::class, 'insertCarimboCrise'])->name('insert.controle_crise');
 /* Fim do insert de carimbos */
 
 /* CRUD de usuários */

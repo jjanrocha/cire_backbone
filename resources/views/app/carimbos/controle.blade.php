@@ -57,8 +57,23 @@
         });
     });
 
-    $(document).on('click', '#btnEnviar', function() {
-        alert('teste');
+    $(document).on('submit', '#carimbo_form', function(event) {
+        event.preventDefault()
+        var tipo_carimbo = $("input:radio[name ='tipo_atividade_id']:checked").val()
+        var dados = $(this).serialize()
+        $.ajax({
+            type: 'POST',
+            data: dados,
+            url: '{{url("carimbos/controle/formularios")}}' + '/' + tipo_carimbo + '/insert',
+            success: function(data) {
+                $("#conteudo").html(data);
+            },
+            error: function(xhr) {
+                $.each(xhr.responseJSON.errors, function(key, value) {
+                    alert(value)
+                });
+            },
+        });
     });
 
 </script>

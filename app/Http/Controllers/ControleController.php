@@ -22,4 +22,13 @@ class ControleController extends Controller
         $lista_contratadas = Contratada::orderBy('nome')->get();
         return view('app.carimbos.forms.controle.form_escalonamento_crise', ['lista_contratadas' => $lista_contratadas,]);
     }
+
+    public function insertCarimboCrise() {
+        
+        $rules = [];
+
+        $feedback = [];
+        
+        echo json_encode(['msg' => 'Requisição feita com sucesso']);
+    }
 }
