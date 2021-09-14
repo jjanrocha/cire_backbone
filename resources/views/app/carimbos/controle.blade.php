@@ -17,41 +17,49 @@
 
         <div class="row">
             <div class="col-md-12">
-                @foreach ( $lista_carimbos_controle as $option )
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="tipo_atividade_id" id="{{str_replace(' ', '_', $option['tipo_carimbo'])}}" value="{{ $option['id'] }}">
-                    <label class="form-check-label" for="{{str_replace(' ', '_', $option['tipo_carimbo'])}}">
-                        {{ $option['tipo_carimbo'] }}
+                    <input class="form-check-input" type="radio" name="tipo_atividade_id" id="controle_crise" value="controle_crise">
+                    <label class="form-check-label" for="controle_crise">
+                        ESCALONAMENTO CRISE
                     </label>
                 </div>
-                @endforeach
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tipo_atividade_id" id="controle_urgente" value="controle_urgente">
+                    <label class="form-check-label" for="controle_urgente">
+                        ESCALONAMENTO URGENTE
+                    </label>
+                </div>
             </div>
         </div>
 
-        <div id="teste"><div>
-
+        <div id="conteudo">
+        </div>
 
     </div>
 </div>
-
 @include('layouts.footer')
 
 <script>
-    $(document).on('click', '#ESCALONAMENTO_CRISE', function() {
-        $.ajax({
-            type: 'POST',
-            data: {"_token": "{{ csrf_token() }}"},
-            url: "{{route('formulario.controle.crise')}}",
-            success: function(data) {
-                $("#teste").html(data);
-            },
-            error: function (xhr, textStatus, errorThrown) {
-                console.log("XHR",xhr);
-                console.log("status",textStatus);
-                console.log("Error in",errorThrown);
-            }
+    $(document).ready(function() {
+        $(document).on('click', "input:radio[name ='tipo_atividade_id']", function() {
+            var tipo_carimbo = $("input:radio[name ='tipo_atividade_id']:checked").val()
+            $.ajax({
+                type: 'POST',
+                data: {"_token": "{{ csrf_token() }}"},
+                url: '{{url("carimbos/controle/formularios")}}' + '/' + tipo_carimbo,
+                success: function(data) {
+                    $("#conteudo").html(data);
+                },
+                error: function(xhr, textStatus, errorThrown) {
+                    $("#conteudo").html('Falha ao tentar carregar o formulário. Caso o erro persista, favor contatar o suporte.');
+                }
+            });
         });
-    })
+    });
+
+    $(document).on('click', '#btnEnviar', function() {
+        alert('teste');
+    });
 
 </script>
 @endsection
