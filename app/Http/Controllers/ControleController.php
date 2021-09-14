@@ -23,11 +23,79 @@ class ControleController extends Controller
         return view('app.carimbos.forms.controle.form_escalonamento_crise', ['lista_contratadas' => $lista_contratadas,]);
     }
 
-    public function insertCarimboCrise() {
+    public function insertCarimboCrise(Request $request) {
         
-        $rules = [];
+        $rules = [
+            'numero_ta' => 'required|integer',
+            'nome_eps' => 'required',
+            'nome_control_desk_um_cire_atento' => 'required',
+            'forma_contato_control_desk_um_cire_atento' => 'required',
+            'nome_control_desk_dois_cire_atento' => 'required',
+            'forma_contato_control_desk_dois_cire_atento' => 'required',
+            'nome_supervisao_cire_atento' => 'required',
+            'forma_contato_supervisao_cire_atento' => 'required',
+            'nome_coordenacao_cire_atento' => 'required',
+            'forma_contato_coordenacao_cire_atento' => 'required',
+            'nome_gestao_cire_atento' => 'required',
+            'forma_contato_gestao_cire_atento' => 'required',
+            'forma_contato_gestao_cire_atento' => 'required',
+            'nome_coordenacao_eps' => 'required',
+            'forma_contato_coordenacao_eps' => 'required',
+            'nome_gerente_eps' => 'required',
+            'forma_contato_gerente_eps' => 'required',
+            'nome_coordenacao_rede_externa' => 'required',
+            'forma_contato_coordenacao_rede_externa' => 'required',
+            'nome_gerente_secao_rede_externa' => 'required',
+            'forma_contato_gerente_secao_rede_externa' => 'required',
+            'nome_gerente_divisao_rede_externa' => 'required',
+            'forma_contato_gerente_divisao_rede_externa' => 'required',
+            'nome_direcao_rede_externa' => 'required',
+            'forma_contato_direcao_rede_externa' => 'required',
+            'nome_gestao_cire_vivo' => 'required',
+            'forma_contato_gestao_cire_vivo' => 'required',
+            'nome_coordenacao_cire_vivo' => 'required',
+            'forma_contato_coordenacao_cire_vivo' => 'required',
+            'nome_gerente_cire_vivo' => 'required',
+            'forma_contato_gerente_cire_vivo' => 'required',
+            'nome_gerente_divisao_cire_vivo' => 'required',
+            'forma_contato_gerente_divisao_cire_vivo' => 'required'
+        ];
 
-        $feedback = [];
+        $feedback = [
+            'numero_ta.required' => 'Informar o TA.',
+            'numero_ta.integer' => 'O TA deve possuir apenas números.',
+            'nome_eps.required' => 'Informar a EPS.',
+            'nome_control_desk_um_cire_atento.required' => 'Preencher o campo Control Desk (CIRE ATENTO).',
+            'forma_contato_control_desk_um_cire_atento.required' => 'Informar o canal de contato com control desk (CIRE ATENTO)',
+            'nome_control_desk_dois_cire_atento.required' => 'Preencher o campo Control Desk (CIRE ATENTO).',
+            'forma_contato_control_desk_dois_cire_atento.required' => 'Informar o canal de contato com control desk (CIRE ATENTO)',
+            'nome_supervisao_cire_atento.required' => 'Preencher o campo Supervisor(a) (CIRE ATENTO).',
+            'forma_contato_supervisao_cire_atento.required' => 'Informar canal de contato com a supervisão (CIRE ATENTO).',
+            'nome_coordenacao_cire_atento.required' => 'Preencher o campo Coordenador(a) (CIRE ATENTO).',
+            'forma_contato_coordenacao_cire_atento.required' => 'Informar canal de contato com a coordenação (CIRE ATENTO).',
+            'nome_gestao_cire_atento.required' => 'Preencher o campo Gestor(a) (CIRE ATENTO).',
+            'forma_contato_gestao_cire_atento.required' => 'Informar canal de contato com a gestão (CIRE ATENTO).',
+            'nome_coordenacao_eps.required' => 'Preencher o campo Coordenadora(a) (EPS).',
+            'forma_contato_coordenacao_eps.required' => 'Informar canal de contato com a coordenação (EPS)',
+            'nome_gerente_eps.required' => 'Preencher o campo Gerente (EPS).',
+            'forma_contato_gerente_eps.required' => 'Informar canal de contato com a gerência (EPS)',
+            'nome_coordenacao_rede_externa.required' => 'Preencher o campo Coordenador(a) (REDE EXTERNA)',
+            'forma_contato_coordenacao_rede_externa.required' => 'Informar canal de contato com a coordenação (REDE EXTERNA)',
+            'nome_gerente_secao_rede_externa.required' => 'Preencher o campo Gerente Seção (REDE EXTERNA)',
+            'forma_contato_gerente_secao_rede_externa.required' => 'Informar canal de contato com gerente seção (REDE EXTERNA)',
+            'nome_gerente_divisao_rede_externa.required' => 'Preencher o campo Gerente Divisão (REDE EXTERNA)',
+            'forma_contato_gerente_divisao_rede_externa.required' => 'Informar canal de contato com gerente divisão (REDE EXTERNA)',
+            'nome_direcao_rede_externa.required' => 'Preencher o campo Diretor(a) (REDE EXTERNA)',
+            'forma_contato_direcao_rede_externa.required' => 'Informar canal de contato com a direção (REDE EXTERNA)',
+            'nome_gestao_cire_vivo.required' => 'Preencher o campo Gestor(a) (CIRE VIVO)',
+            'forma_contato_gestao_cire_vivo.required' => 'Informar canal de contato com a gestão (CIRE VIVO)',
+            'nome_coordenacao_cire_vivo.required' => 'Preencher o campo Coordenador(a) (CIRE VIVO)',
+            'forma_contato_coordenacao_cire_vivo.required' => 'Informar canal de contato com a coordenação (CIRE VIVO)',
+            'nome_gerente_cire_vivo.required' => 'Preencher o campo Gerente (CIRE VIVO)',
+            'forma_contato_gerente_cire_vivo.required' => 'Informar canal de contato com a gerência (CIRE VIVO)',
+            'nome_gerente_divisao_cire_vivo.required' => 'Preencher o campo Gerente Divisão (CIRE VIVO)',
+            'forma_contato_gerente_divisao_cire_vivo.required' => 'Informar canal de contato com gerente divisão (CIRE VIVO)'
+        ];
         
         echo json_encode(['msg' => 'Requisição feita com sucesso']);
     }

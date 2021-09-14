@@ -77,7 +77,7 @@
                 <div class="form-group row">
                     <label for="nome_coordenacao_eps" class="col-form-label col-lg-2">Coordenador(a):</label>
                     <input type="text" class="form-control mr-lg-1 col-lg-5" name="nome_coordenacao_eps" id="nome_coordenacao_eps" placeholder="Coordenador(a) (EPS)" required>
-                    <select class="custom-select col-lg-2" name="forma_contato_coordenador_eps" required>
+                    <select class="custom-select col-lg-2" name="forma_contato_coordenacao_eps" required>
                         <option value="">Canal</option>
                         <option value="via caixa postal">Caixa postal</option>
                         <option value="via fone">Fone</option>
@@ -135,9 +135,9 @@
                     </select>
                 </div>
                 <div class="form-group row">
-                    <label for="nome_diretor_rede_externa" class="col-form-label col-lg-2">Diretor:</label>
-                    <input type="text" class="form-control mr-lg-1 col-lg-5" name="nome_diretor_rede_externa" id="nome_diretor_rede_externa" placeholder="Diretor (REDE EXTERNA)">
-                    <select class="custom-select col-lg-2" name="forma_contato_diretor_rede_externa" required>
+                    <label for="nome_diretor_rede_externa" class="col-form-label col-lg-2">Diretor(a):</label>
+                    <input type="text" class="form-control mr-lg-1 col-lg-5" name="nome_direcao_rede_externa" id="nome_direcao_rede_externa" placeholder="Diretor(a) (REDE EXTERNA)">
+                    <select class="custom-select col-lg-2" name="forma_contato_direcao_rede_externa" required>
                         <option value="">Canal</option>
                         <option value="via caixa postal">Caixa postal</option>
                         <option value="via fone">Fone</option>
@@ -151,9 +151,9 @@
                 <b>CIRE VIVO</b>
                 <br>
                 <div class="form-group row">
-                    <label for="nome_gestor_cire_vivo" class="col-form-label col-lg-2">Gestor:</label>
-                    <input type="text" class="form-control mr-lg-1 col-lg-5" name="nome_gestor_cire_vivo" id="nome_gestor_cire_vivo" placeholder="Gestor (CIRE VIVO)" required>
-                    <select class="custom-select col-lg-2" name="forma_contato_gestor_cire_vivo" required>
+                    <label for="nome_gestao_cire_vivo" class="col-form-label col-lg-2">Gestor(a):</label>
+                    <input type="text" class="form-control mr-lg-1 col-lg-5" name="nome_gestao_cire_vivo" id="nome_gestao_cire_vivo" placeholder="Gestor(a) (CIRE VIVO)" required>
+                    <select class="custom-select col-lg-2" name="forma_contato_gestao_cire_vivo" required>
                         <option value="">Canal</option>
                         <option value="via caixa postal">Caixa postal</option>
                         <option value="via fone">Fone</option>
