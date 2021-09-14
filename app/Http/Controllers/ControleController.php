@@ -20,7 +20,7 @@ class ControleController extends Controller
 
     public function carregarFormCrise() {
         $lista_contratadas = Contratada::orderBy('nome')->get();
-        return view('app.carimbos.forms.controle.form_escalonamento_crise', ['lista_contratadas' => $lista_contratadas,]);
+        return view('app.carimbos.forms.controle.escalonamento_crise', ['lista_contratadas' => $lista_contratadas,]);
     }
 
     public function insertCarimboCrise(Request $request) {
@@ -40,24 +40,34 @@ class ControleController extends Controller
             'forma_contato_gestao_cire_atento' => 'required',
             'forma_contato_gestao_cire_atento' => 'required',
             'nome_coordenacao_eps' => 'required',
+            'horario_contato_coordenacao_eps' => 'required',
             'forma_contato_coordenacao_eps' => 'required',
             'nome_gerente_eps' => 'required',
+            'horario_contato_gerente_eps' => 'required',
             'forma_contato_gerente_eps' => 'required',
             'nome_coordenacao_rede_externa' => 'required',
+            'horario_contato_coordenacao_rede_externa' => 'required',
             'forma_contato_coordenacao_rede_externa' => 'required',
             'nome_gerente_secao_rede_externa' => 'required',
+            'horario_contato_gerente_secao_rede_externa' => 'required',
             'forma_contato_gerente_secao_rede_externa' => 'required',
             'nome_gerente_divisao_rede_externa' => 'required',
+            'horario_contato_gerente_divisao_rede_externa' => 'required',
             'forma_contato_gerente_divisao_rede_externa' => 'required',
             'nome_direcao_rede_externa' => 'required',
+            'horario_contato_direcao_rede_externa' => 'required',
             'forma_contato_direcao_rede_externa' => 'required',
             'nome_gestao_cire_vivo' => 'required',
+            'horario_contato_gestao_cire_vivo' => 'required',
             'forma_contato_gestao_cire_vivo' => 'required',
             'nome_coordenacao_cire_vivo' => 'required',
+            'horario_contato_coordenacao_cire_vivo' => 'required',
             'forma_contato_coordenacao_cire_vivo' => 'required',
             'nome_gerente_cire_vivo' => 'required',
+            'horario_contato_gerente_cire_vivo' => 'required',
             'forma_contato_gerente_cire_vivo' => 'required',
             'nome_gerente_divisao_cire_vivo' => 'required',
+            'horario_contato_gerente_divisao_cire_vivo' => 'required',
             'forma_contato_gerente_divisao_cire_vivo' => 'required'
         ];
 
