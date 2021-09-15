@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Atividade;
 use App\Models\TipoAtividade;
 use App\Models\Contratada;
 
@@ -24,7 +26,8 @@ class ControleController extends Controller
     }
 
     public function insertCarimboCrise(Request $request) {
-        
+
+        //Regras de validação dos campos do form
         $rules = [
             'numero_ta' => 'required|integer',
             'nome_eps' => 'required',
@@ -71,6 +74,7 @@ class ControleController extends Controller
             'forma_contato_gerente_divisao_cire_vivo' => 'required'
         ];
 
+        //Mensagens de retorno em caso de erro
         $feedback = [
             'numero_ta.required' => 'Informar o TA.',
             'numero_ta.integer' => 'O TA deve possuir apenas números.',
@@ -116,7 +120,23 @@ class ControleController extends Controller
             'horario_contato_gerente_divisao_cire_vivo.required' => 'Informar o horário do contato com gerente divisão (CIRE VIVO)',
             'forma_contato_gerente_divisao_cire_vivo.required' => 'Informar canal de contato com gerente divisão (CIRE VIVO)'
         ];
+
+        //Validação dos campos do form
+        $request->validate($rules, $feedback);
         
-        echo json_encode(['msg' => 'Requisição feita com sucesso']);
+
+        //Instância do model atividade
+        $atividade = new Atividade();
+
+        //Atribuindo os valores
+        $atividade->usuario_id = Auth::user()->id;
+        $atividade->data_hora = date("Y-m-d H:i:s");
+        $atividade->numero_ta = $request->numero_ta;
+        $atividade->tipo_atividade_id = 1;
+        $atividade->carimbo = 'Teste estático';
+
+        $atividade->save();
+        
+        echo json_encode(['Atividade' => $atividade]);
     }
 }
