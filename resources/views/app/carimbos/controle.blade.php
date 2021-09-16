@@ -9,7 +9,6 @@
 <div class="main" id="pagina">
     <div class="container">
 
-
         <div>
             <h4>Controle</h4>
             <hr>
@@ -47,8 +46,8 @@
                 type: 'POST',
                 data: {"_token": "{{ csrf_token() }}"},
                 url: '{{url("carimbos/controle/formularios")}}' + '/' + tipo_carimbo,
-                success: function(data) {
-                    $("#conteudo").html(data);
+                success: function(form) {
+                    $("#conteudo").html(form);
                 },
                 error: function(xhr, textStatus, errorThrown) {
                     $("#conteudo").html('Falha ao tentar carregar o formulário. Caso o erro persista, favor contatar o suporte.');
@@ -65,8 +64,14 @@
             type: 'POST',
             data: dados,
             url: '{{url("carimbos/controle/formularios")}}' + '/' + tipo_carimbo + '/insert',
-            success: function(data) {
-                $("#conteudo").html(data);
+            success: function(response) {
+                $('input[name=tipo_atividade_id]').prop('checked', false);
+                var textarea_carimbo = document.createElement("TEXTAREA");
+                textarea_carimbo.className = 'form-control col-md-9'
+                textarea_carimbo.rows = 27
+                textarea_carimbo.readOnly = true;
+                textarea_carimbo.innerHTML = response.carimbo;
+                $("#conteudo").html(textarea_carimbo);
             },
             error: function(xhr) {
                 $.each(xhr.responseJSON.errors, function(key, value) {

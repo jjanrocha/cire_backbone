@@ -27,6 +27,8 @@ class ControleController extends Controller
 
     public function insertCarimboCrise(Request $request) {
 
+        $nome_usuario = auth()->user()->nome;
+        
         //Regras de validação dos campos do form
         $rules = [
             'numero_ta' => 'required|integer',
@@ -124,19 +126,22 @@ class ControleController extends Controller
         //Validação dos campos do form
         $request->validate($rules, $feedback);
         
-
         //Instância do model atividade
         $atividade = new Atividade();
+
+        //Criação do carimbo para insert no banco e retorno ao usuário.
+        $response['carimbo'] = "xxxxxxxxxxxxxxx Escalonamento CRISE xxxxxxxxxxxxxx\n----------------------------------------------------\nCIRE ATENTO\nControl Desk: $request->nome_control_desk_um_cire_atento $request->forma_contato_control_desk_um_cire_atento\nControl Desk: $request->nome_control_desk_dois_cire_atento $request->forma_contato_control_desk_dois_cire_atento\nSupervisor(a): $request->nome_supervisao_cire_atento $request->forma_contato_supervisao_cire_atento\nCoordenador(a): $request->nome_coordenacao_cire_atento $request->forma_contato_coordenacao_cire_atento\nGestor(a): $request->nome_gestao_cire_atento $request->forma_contato_gestao_cire_atento\n----------------------------------------------------\nEPS ($request->nome_eps)\nCoordenador(a): $request->nome_coordenacao_eps $request->horario_contato_coordenacao_eps $request->forma_contato_coordenacao_eps\nGerente: $request->nome_gerente_eps $request->horario_contato_gerente_eps $request->forma_contato_gerente_eps\n----------------------------------------------------\nREDE EXTERNA\nCoordenador(a): $request->nome_coordenacao_rede_externa $request->horario_contato_coordenacao_rede_externa $request->forma_contato_coordenacao_rede_externa\nGerente Seção: $request->nome_gerente_secao_rede_externa $request->horario_contato_gerente_secao_rede_externa $request->forma_contato_gerente_secao_rede_externa\nGerente Divisão: $request->nome_gerente_divisao_rede_externa $request->horario_contato_gerente_divisao_rede_externa $request->forma_contato_gerente_divisao_rede_externa\nDiretora(a): $request->nome_direcao_rede_externa $request->horario_contato_direcao_rede_externa $request->forma_contato_direcao_rede_externa\n----------------------------------------------------\nCIRE VIVO\nGestor(a): $request->nome_gestao_cire_vivo $request->horario_contato_gestao_cire_vivo $request->forma_contato_gestao_cire_vivo\nCoordenador(a): $request->nome_coordenacao_cire_vivo $request->horario_contato_coordenacao_cire_vivo $request->forma_contato_coordenacao_cire_vivo\nGerente: $request->nome_gerente_cire_vivo $request->horario_contato_gerente_cire_vivo $request->forma_contato_gerente_cire_vivo\nGerente Divisão: $request->nome_gerente_divisao_cire_vivo $request->horario_contato_gerente_divisao_cire_vivo $request->forma_contato_gerente_divisao_cire_vivo\n----------------------------------------------------\nAnalista Cire: $nome_usuario\nxxxxxxxxxxxxxxx Escalonamento CRISE xxxxxxxxxxxxxx";
+
+        $response['mensagem'] = "Carimbo gerado com sucesso.";
 
         //Atribuindo os valores
         $atividade->usuario_id = Auth::user()->id;
         $atividade->data_hora = date("Y-m-d H:i:s");
         $atividade->numero_ta = $request->numero_ta;
         $atividade->tipo_atividade_id = 1;
-        $atividade->carimbo = 'Teste estático';
+        $atividade->carimbo = $response['carimbo'];
+        //$atividade->save();
 
-        $atividade->save();
-        
-        echo json_encode(['Atividade' => $atividade]);
+        return response()->json($response);
     }
 }
