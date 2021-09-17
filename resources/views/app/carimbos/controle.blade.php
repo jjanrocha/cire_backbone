@@ -64,15 +64,17 @@
             type: 'POST',
             data: dados,
             url: '{{url("carimbos/controle/formularios")}}' + '/' + tipo_carimbo + '/insert',
+
             success: function(response) {
                 $('input[name=tipo_atividade_id]').prop('checked', false);
                 var textarea_carimbo = document.createElement("TEXTAREA");
-                textarea_carimbo.className = 'form-control col-md-9'
-                textarea_carimbo.rows = 27
+                textarea_carimbo.className = "form-control col-md-8 mt-1";
+                textarea_carimbo.rows = 27;
                 textarea_carimbo.readOnly = true;
                 textarea_carimbo.innerHTML = response.carimbo;
                 $("#conteudo").html(textarea_carimbo);
             },
+            
             error: function(xhr) {
                 $.each(xhr.responseJSON.errors, function(key, value) {
                     alert(value)

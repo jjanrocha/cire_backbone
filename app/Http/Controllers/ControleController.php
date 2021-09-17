@@ -140,7 +140,7 @@ class ControleController extends Controller
         $atividade->numero_ta = $request->numero_ta;
         $atividade->tipo_atividade_id = 1;
         $atividade->carimbo = $response['carimbo'];
-        //$atividade->save();
+        $atividade->save();
 
         return response()->json($response);
     }
