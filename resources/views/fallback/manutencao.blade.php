@@ -1,5 +1,5 @@
 @extends('layouts.basico')
-@section('title', 'Usuário não localizado')
+@section('title', 'Página em manutenção')
 
 @section('content')
 
