@@ -40,6 +40,7 @@ Route::get('/links', function(){ return view('fallback.manutencao');})->name('li
 
 /* Formulários de carimbos */
 Route::post('/carimbos/controle/formularios/controle_crise',[ControleController::class, 'carregarFormCrise'])->name('formulario.controle_crise');
+Route::post('/carimbos/controle/formularios/controle_urgente',[ControleController::class, 'carregarFormUrgente'])->name('formulario.controle_urgente');
 /* Fim dos formulários de carimbos */
 
 /* Insert de carimbos */

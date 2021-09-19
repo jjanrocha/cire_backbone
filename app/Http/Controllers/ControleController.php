@@ -25,6 +25,11 @@ class ControleController extends Controller
         return view('app.carimbos.forms.controle.escalonamento_crise', ['lista_contratadas' => $lista_contratadas,]);
     }
 
+    public function carregarFormUrgente() {
+        $lista_contratadas = Contratada::orderBy('nome')->get();
+        return view('app.carimbos.forms.controle.escalonamento_urgente', ['lista_contratadas' => $lista_contratadas,]);
+    }
+
     public function insertCarimboCrise(Request $request) {
 
         $nome_usuario = auth()->user()->nome;
