@@ -22,7 +22,7 @@
                         Total
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title" id="total_atividades">{{$total_atividades}}</h5>
+                        <h5 class="card-title" id="total_atividades">{{count($atividades)}}</h5>
                     </div>
                 </div>
 
