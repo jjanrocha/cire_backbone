@@ -16,6 +16,7 @@ class DashboardController extends Controller
         //Retornar o total de atividades do tipo Escalonamento Crise (controle)
         $total_escalonamento_crise = DB::table('cire_backbone_atividades')
         ->join('cire_backbone_tipos_atividades', 'cire_backbone_atividades.tipo_atividade_id', '=', 'cire_backbone_tipos_atividades.id')
+        ->where('cire_backbone_tipos_atividades.tipo_carimbo', 'ESCALONAMENTO CRISE')
         ->select('cire_backbone_atividades.*')
         ->count();
 
