@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\CarimboController;
 use App\Http\Controllers\ControleController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +31,7 @@ Route::post('/login',[LoginController::class, 'authenticate'])->name('login');
 Route::post('/logout',[LoginController::class, 'logout'])->name('logout');
 
 /* Links da sidebar */
-Route::get('/dashboard', function(){ return view('fallback.manutencao');})->name('dashboard.index')->middleware('auth');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index')->middleware('auth');
 Route::get('/carimbos/b2b', function(){ return view('fallback.manutencao');})->name('carimbos.b2b.index')->middleware('auth');
 Route::get('/carimbos/controle', [ControleController::class, 'carregarViewControle'])->name('carimbos.controle.index')->middleware('auth');
 Route::get('/carimbos/gerais', function(){ return view('fallback.manutencao');})->name('carimbos.gerais.index')->middleware('auth');
