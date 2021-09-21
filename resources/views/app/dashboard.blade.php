@@ -34,7 +34,8 @@
 
       var data = google.visualization.arrayToDataTable([
         ['Tipo de atividade', 'Total'],
-        ['Escalonamento Crise', {{$total_escalonamento_crise}}]
+        ['Escalonamento Crise', {{$total_escalonamento_crise}}],
+        ['Escalonamento Urgente', {{$total_escalonamento_urgente}}],
       ]);
 
       var options = {

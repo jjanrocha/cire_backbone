@@ -20,10 +20,18 @@ class DashboardController extends Controller
         ->select('cire_backbone_atividades.*')
         ->count();
 
+        //Retornar o total de atividades do tipo Escalonamento Urgente (controle)
+        $total_escalonamento_urgente= DB::table('cire_backbone_atividades')
+        ->join('cire_backbone_tipos_atividades', 'cire_backbone_atividades.tipo_atividade_id', '=', 'cire_backbone_tipos_atividades.id')
+        ->where('cire_backbone_tipos_atividades.tipo_carimbo', 'ESCALONAMENTO URGENTE')
+        ->select('cire_backbone_atividades.*')
+        ->count();
+
         return view('app.dashboard',[
             'title' => 'Dashboard',
             'total_atividades' => $total_atividades,
-            'total_escalonamento_crise' => $total_escalonamento_crise
+            'total_escalonamento_crise' => $total_escalonamento_crise,
+            'total_escalonamento_urgente' => $total_escalonamento_urgente
         ]);
     }
 }
