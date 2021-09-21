@@ -81,6 +81,9 @@
 </div>
 
 @include('layouts.footer')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script src="//cdn.datatables.net/plug-ins/1.11.2/dataRender/datetime.js"></script>
+<script src="https://cdn.datatables.net/plug-ins/1.10.19/sorting/datetime-moment.js"></script>
 
 <script type="text/javascript">
     $('#atualizar-lista-atividades-usuarios').on('click', function() {
@@ -109,7 +112,7 @@
                     }
                 },
                 { "data": "tipo_carimbo" },
-                { "data": "data_hora" }
+                { "data": "data_hora", render: $.fn.dataTable.render.moment('YYYY-MM-DD HH:mm:ss', 'DD/MM/YYYY HH:mm:ss') }
             ],
             "processing": true,
             language: {
