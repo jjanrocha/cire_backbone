@@ -149,4 +149,46 @@ class ControleController extends Controller
 
         return response()->json($response);
     }
+
+
+    public function insertCarimboUrgente(Request $request) {
+
+    $nome_usuario = auth()->user()->nome;
+    
+    //Regras de validação dos campos do form
+    $rules = [
+        'numero_ta' => 'required|integer',
+        'nome_eps' => 'required',
+        'escalonamento_horas' => 'required'
+    ];
+
+    //Mensagens de retorno em caso de erro
+    $feedback = [
+        'numero_ta.required' => 'Informar o TA.',
+        'numero_ta.integer' => 'O TA deve possuir apenas números.'
+    ];
+
+    //Validação dos campos do form
+    $request->validate($rules, $feedback);
+    
+    //Instância do model atividade
+    $atividade = new Atividade();
+
+    //Criação do carimbo para insert no banco e retorno ao usuário.
+    $response['carimbo'] = "xxxxxxxxxxxxxxx Escalonamento $request->escalonamento_horas horas xxxxxxxxxxxxxx\n----------------------------------------------------\nVIVO REDE\nN1: $request->n1_vivo_rede $request->horario_contato_n1_vivo_rede $request->forma_contato_n1_vivo_rede\nN2: $request->n2_vivo_rede $request->horario_contato_n2_vivo_rede $request->forma_contato_n2_vivo_rede \nN3: $request->n3_vivo_rede $request->horario_contato_n3_vivo_rede $request->forma_contato_n3_vivo_rede \nN4: $request->n4_vivo_rede $request->horario_contato_n4_vivo_rede $request->forma_contato_n4_vivo_rede \nN5: $request->n5_vivo_rede $request->horario_contato_n5_vivo_rede $request->forma_contato_n5_vivo_rede \n----------------------------------------------------\nVIVO CIRE \nN1: $request->n1_vivo_cire $request->horario_contato_n1_vivo_cire $request->forma_contato_n1_vivo_cire \nN2: $request->n2_vivo_cire $request->horario_contato_n2_vivo_cire $request->forma_contato_n2_vivo_cire \nN3: $request->n3_vivo_cire $request->horario_contato_n3_vivo_cire $request->forma_contato_n3_vivo_cire \nN4: $request->n4_vivo_cire $request->horario_contato_n4_vivo_cire $request->forma_contato_n4_vivo_cire \nN5: $request->n5_vivo_cire $request->horario_contato_n5_vivo_cire $request->forma_contato_n5_vivo_cire\n----------------------------------------------------\nEPS $request->nome_eps \nN1: $request->n1_eps $request->horario_contato_n1_eps $request->forma_contato_n1_eps \nN2: $request->n2_eps $request->horario_contato_n2_eps $request->forma_contato_n2_eps \n----------------------------------------------------\nAnalista Cire: $nome_usuario\nxxxxxxxxxxxxxxx Escalonamento $request->escalonamento_horas horas xxxxxxxxxxxxxx";
+
+    $response['mensagem'] = "Carimbo gerado com sucesso.";
+
+    //Atribuindo os valores
+    $atividade->usuario_id = Auth::user()->id;
+    $atividade->data_hora = date("Y-m-d H:i:s");
+    $atividade->numero_ta = $request->numero_ta;
+    $atividade->tipo_atividade_id = 2;
+    $atividade->carimbo = $response['carimbo'];
+    $atividade->save();
+
+    return response()->json($response);
 }
+    
+}
+

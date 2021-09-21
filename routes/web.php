@@ -46,6 +46,7 @@ Route::post('/carimbos/controle/formularios/controle_urgente',[ControleControlle
 
 /* Insert de carimbos */
 Route::post('/carimbos/controle/formularios/controle_crise/insert',[ControleController::class, 'insertCarimboCrise'])->name('insert.controle_crise');
+Route::post('/carimbos/controle/formularios/controle_urgente/insert',[ControleController::class, 'insertCarimboUrgente'])->name('insert.controle_urgente');
 /* Fim do insert de carimbos */
 
 /* CRUD de usuários */

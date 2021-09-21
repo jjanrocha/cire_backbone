@@ -172,7 +172,7 @@
                 </select>
             </div>
         </div>
-        <button type="#" id="btnEnviar" class="btn btn-success my-1">Gerar Carimbo</button>
+        <button type="submit" id="btnEnviar" class="btn btn-success my-1">Gerar Carimbo</button>
         <button type="reset" id="btnReset" class="btn btn-danger my-1">Limpar</button>
     </form>
 
