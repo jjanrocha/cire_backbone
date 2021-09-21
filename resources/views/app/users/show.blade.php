@@ -16,7 +16,7 @@
             <a type="button" href="{{route('usuarios.index')}}" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Lista de Usuários</a>
         </div>
         @if (Session::has('mensagem'))
-            {{Session::get('mensagem')}}
+        {{Session::get('mensagem')}}
         @endif
         <div>
             <b>Nome: </b>{{$user->nome}}
@@ -37,6 +37,20 @@
         <hr>
         <div>
             <h5>Últimas atividades</h5>
+            <div>
+                <i class="fas fa-redo" id="atualizar-lista-atividades-usuarios" title="Atualizar"></i>
+            </div>
+            <div class="table-responsive-sm">
+                <table id="lista_atividades_usuarios" class="table table-striped table-dark" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>TA</th>
+                            <th>Tipo de Carimbo</th>
+                            <th>Data/hora</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
         </div>
         <!-- Modal -->
         <div class="modal fade" id="modalDeleteUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -67,5 +81,46 @@
 </div>
 
 @include('layouts.footer')
+
+<script type="text/javascript">
+    $('#atualizar-lista-atividades-usuarios').on('click', function() {
+        $('#lista_atividades_usuarios').DataTable().ajax.reload();
+    });
+
+    $(document).ready(function() {
+        $('#lista_atividades_usuarios').DataTable({
+
+            "ajax": {
+                "data": {
+                    "_token": "{{ csrf_token() }}",
+                    "user": "{{Request::segment(2)}}"
+                },
+                "url": "{{ route('usuarios.listar_atividades') }}",
+                "type": "POST",
+                "datatype": "JSON",
+                "dataSrc": function(users_tasks) {
+                    return users_tasks.data;
+                },
+            },
+             "columns": [
+                { "data": "numero_ta",
+                  "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
+                        $(nTd).html("<a href='https://sigitm.vivo.com.br/app/app.jsp#TA=" + oData.numero_ta + "'target='_blank'>" + oData.numero_ta + "</a>");
+                    }
+                },
+                { "data": "tipo_carimbo" },
+                { "data": "data_hora" }
+            ],
+            "processing": true,
+            language: {
+                url: '//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json'
+            },
+            order: [
+                [2, "desc"]
+            ]
+        });
+    });
+
+</script>
 
 @endsection

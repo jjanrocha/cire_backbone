@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\Models\User;
 
 class UsuarioController extends Controller
@@ -62,6 +63,17 @@ class UsuarioController extends Controller
     public function show(User $user) {
 
         return view('app.users.show', ['title' => 'Visualizar Usuário', 'user' => $user]);
+    }
+
+    public function listarAtividadesUsuario(User $user, Request $request) {
+        $lista_atividades_usuarios = DB::table('cire_backbone_atividades')
+        ->where('usuario_id', $request->user)
+        ->join('cire_backbone_tipos_atividades', 'cire_backbone_atividades.tipo_atividade_id', '=', 'cire_backbone_tipos_atividades.id')
+        ->select('cire_backbone_atividades.*', 'cire_backbone_tipos_atividades.categoria', 'cire_backbone_tipos_atividades.tipo_carimbo')
+        ->get();
+
+        $json_data = array('data' => $lista_atividades_usuarios);
+        return response()->json($json_data);
     }
     
     public function edit(User $user) {
