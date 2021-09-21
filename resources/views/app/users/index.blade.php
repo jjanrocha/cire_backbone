@@ -49,31 +49,30 @@
             "ajax": {
                 "data": {
                     "_token": "{{ csrf_token() }}"
-                }
-                , "url": "{{route('usuarios.listar')}}"
-                , "type": "POST"
-                , "datatype": "JSON"
-                , "dataSrc": function(users) {
+                },
+                "url": "{{route('usuarios.listar')}}",
+                "type": "POST",
+                "datatype": "JSON",
+                "dataSrc": function(users) {
                     return users.data;
-                }
-            , }
-            , "columns": [{
-                    "data": "id"
-                    , "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
+                },
+            },
+            "columns": [
+                { "data": "id",
+                    "fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
                         $(nTd).html("<a href='usuarios/" + oData.id + "'>" + oData.id + "</a>");
                     }
-                }
-                , {
-                    "data": "nome"
-                }
-                , {
-                    "data": "nivel"
-                }
-            , ]
-            , "processing": true
-            , language: {
+                },
+                {   "data": "nome" },
+                {   "data": "nivel" },
+            ],
+            "processing": true,
+            language: {
                 url: '//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json'
-            }
+            },
+            order: [
+                [1, "asc"]
+            ]
         });
     });
 
