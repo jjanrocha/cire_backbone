@@ -28,6 +28,12 @@
                         ESCALONAMENTO URGENTE
                     </label>
                 </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tipo_atividade_id" id="controle_atualizacao_telegram" value="controle_atualizacao_telegram">
+                    <label class="form-check-label" for="controle_atualizacao_telegram">
+                        ATUALIZAÇÃO TELEGRAM
+                    </label>
+                </div>
             </div>
         </div>
 

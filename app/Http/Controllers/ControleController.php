@@ -30,6 +30,10 @@ class ControleController extends Controller
         return view('app.carimbos.forms.controle.escalonamento_urgente', ['lista_contratadas' => $lista_contratadas,]);
     }
 
+    public function carregarFormAtualizacaoTelegram() {
+        return view('app.carimbos.forms.controle.atualizacao_telegram');
+    }
+
     public function insertCarimboCrise(Request $request) {
 
         $nome_usuario = auth()->user()->nome;

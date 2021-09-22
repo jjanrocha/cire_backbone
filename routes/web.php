@@ -39,10 +39,11 @@ Route::get('/carimbos/vivo2', function(){ return view('fallback.manutencao');})-
 Route::get('/links', function(){ return view('fallback.manutencao');})->name('links.index')->middleware('auth');
 /* Fim dos links da sidebar */
 
-/* Formulários de carimbos */
+/* Carregar formulários de carimbos */
 Route::post('/carimbos/controle/formularios/controle_crise',[ControleController::class, 'carregarFormCrise'])->name('formulario.controle_crise');
 Route::post('/carimbos/controle/formularios/controle_urgente',[ControleController::class, 'carregarFormUrgente'])->name('formulario.controle_urgente');
-/* Fim dos formulários de carimbos */
+Route::post('/carimbos/controle/formularios/controle_atualizacao_telegram',[ControleController::class, 'carregarFormAtualizacaoTelegram'])->name('formulario.controle_atualizacao_telegram');
+/* Fim do carregamento de formulários de carimbos */
 
 /* Insert de carimbos */
 Route::post('/carimbos/controle/formularios/controle_crise/insert',[ControleController::class, 'insertCarimboCrise'])->name('insert.controle_crise');
