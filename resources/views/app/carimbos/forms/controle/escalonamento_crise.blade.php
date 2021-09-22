@@ -26,16 +26,16 @@
             <br>
             <div class="form-group row">
                 <label for="nome_control_desk_um_cire_atento" class="col-form-label col-lg-2">Control Desk:</label>
-                <input type="text" class="form-control mr-lg-1 col-lg-4" name="nome_control_desk_um_cire_atento" id="nome_control_desk_um_cire_atento" placeholder="Control Desk (CIRE ATENTO)" required>
+                <input type="text" class="form-control mr-lg-1 col-lg-4" name="nome_control_desk_um_cire_atento" id="nome_control_desk_um_cire_atento" placeholder="Control Desk (CIRE ATENTO)" value="Cristina Gomes" required>
                 <select class="custom-select col-lg-2" name="forma_contato_control_desk_um_cire_atento" required>
-                    <option value="via telegram">Telegram</option>
+                    <option value="via telegram" selected>Telegram</option>
                     <option disabled value="">Meio</option>
                     <option value="via caixa postal">Caixa postal</option>
                     <option value="via fone">Fone</option>
                     <option value="não possui caixa postal">Sem caixa postal</option>
                 </select>
             </div>
-            <div class="form-group row">
+            <!--div class="form-group row">
                 <label for="nome_control_desk_dois_cire_atento" class="col-form-label col-lg-2">Control Desk:</label>
                 <input type="text" class="form-control mr-lg-1 col-lg-4" name="nome_control_desk_dois_cire_atento" id="nome_control_desk_dois_cire_atento" placeholder="Control Desk (CIRE ATENTO)" required>
                 <select class="custom-select col-lg-2" name="forma_contato_control_desk_dois_cire_atento" required>
@@ -45,10 +45,10 @@
                     <option value="via fone">Fone</option>
                     <option value="não possui caixa postal">Sem caixa postal</option>
                 </select>
-            </div>
+            </div -->
             <div class="form-group row">
                 <label for="nome_supervisao_cire_atento" class="col-form-label col-lg-2">Supervisor(a):</label>
-                <input type="text" class="form-control mr-lg-1 col-lg-4" name="nome_supervisao_cire_atento" id="nome_supervisao_cire_atento" placeholder="Supervisor(a) (CIRE ATENTO)" required>
+                <input type="text" class="form-control mr-lg-1 col-lg-4" name="nome_supervisao_cire_atento" id="nome_supervisao_cire_atento" placeholder="Supervisor(a) (CIRE ATENTO)" value="Evelyn Bezerra " required>
                 <select class="custom-select col-lg-2" name="forma_contato_supervisao_cire_atento" required>
                     <option value="via telegram">Telegram</option>
                     <option disabled value="">Meio</option>
@@ -59,7 +59,7 @@
             </div>
             <div class="form-group row">
                 <label for="nome_coordenacao_cire_atento" class="col-form-label col-lg-2">Coordenador(a):</label>
-                <input type="text" class="form-control mr-lg-1 col-lg-4" name="nome_coordenacao_cire_atento" id="nome_coordenacao_cire_atento" placeholder="Coordenador(a) (CIRE ATENTO)" required>
+                <input type="text" class="form-control mr-lg-1 col-lg-4" name="nome_coordenacao_cire_atento" id="nome_coordenacao_cire_atento" placeholder="Coordenador(a) (CIRE ATENTO)" value="Railson Farias" required>
                 <select class="custom-select col-lg-2" name="forma_contato_coordenacao_cire_atento" required>
                     <option value="via telegram">Telegram</option>
                     <option disabled value="">Meio</option>
@@ -70,7 +70,7 @@
             </div>
             <div class="form-group row">
                 <label for="nome_gestao_cire_atento" class="col-form-label col-lg-2">Gestor(a):</label>
-                <input type="text" class="form-control mr-lg-1 col-lg-4" name="nome_gestao_cire_atento" id="nome_gestao_cire_atento" placeholder="Gestor(a) (CIRE ATENTO)" required>
+                <input type="text" class="form-control mr-lg-1 col-lg-4" name="nome_gestao_cire_atento" id="nome_gestao_cire_atento" placeholder="Gestor(a) (CIRE ATENTO)" value="Erick Paim" required>
                 <select class="custom-select col-lg-2" name="forma_contato_gestao_cire_atento" required>
                     <option value="via telegram">Telegram</option>
                     <option disabled value="">Meio</option>
