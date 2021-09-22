@@ -11,6 +11,14 @@
                 <option value="{{$contratada['nome']}}">{{$contratada['nome']}}</option>
                 @endforeach
             </select>
+
+            <select class="custom-select my-1 mr-sm-2 ml-md-1" name="tipo_carimbo" required>
+                <option value="" disabled selected>Selecione o tipo</option>
+                <option value="INICIAL">CRISE INICIAL</option>
+                <option value="LOOP">CRISE LOOP</option>
+                <option value="DUPLA FALHA">DUPLA FALHA</option>
+                <option value="TRIPLA FALHA">TRIPLA FALHA</option>
+            </select>
         </div>
 
         <div class="my-2">

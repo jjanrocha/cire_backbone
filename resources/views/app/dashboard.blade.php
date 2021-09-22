@@ -12,12 +12,35 @@
         <h4>Dashboard</h4>
         <hr>
         
-        <div class="row">
-          <div class="col-12">
-            <div id="piechart"></div>
-          </div>
-        </div>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="dashboard_geral-tab" data-toggle="tab" href="#dashboard_geral" role="tab" aria-controls="dashboard_geral" aria-selected="true">Geral</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="dashboard_operacao-tab" data-toggle="tab" href="#dashboard_operacao" role="tab" aria-controls="dashboard_operacao" aria-selected="false">Operação</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="dashboard_analistas-tab" data-toggle="tab" href="#dashboard_analistas" role="tab" aria-controls="dashboard_analistas" aria-selected="false">Analistas</a>
+            </li>
+        </ul>
 
+        <div class="tab-content">
+
+            <div class="tab-pane active" id="dashboard_geral" role="tabpanel" aria-labelledby="dashboard_geral-tab">
+                <p class="mt-1">Página em manutenção</p>
+                <p class="mt-1">Total de registros: {{$total_atividades}}</p>
+                <div id="piechart" style="height:350px"></div>
+            </div>
+
+            <div class="tab-pane" id="dashboard_operacao" role="tabpanel" aria-labelledby="dashboard_operacao-tab">
+                <p class="mt-1">Página em manutenção</p>
+            </div>
+
+            <div class="tab-pane" id="dashboard_analistas" role="tabpanel" aria-labelledby="dashboard_analistas-tab">
+                <p class="mt-1">Página em manutenção</p>
+            </div>
+
+        </div>
 
     </div>
 </div>
