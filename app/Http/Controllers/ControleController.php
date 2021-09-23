@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Atividade;
 use App\Models\TipoAtividade;
 use App\Models\Contratada;
+use App\Models\Equipamento;
+use App\Models\Operadora;
 
 class ControleController extends Controller
 {
@@ -22,16 +24,21 @@ class ControleController extends Controller
 
     public function carregarFormCrise() {
         $lista_contratadas = Contratada::orderBy('nome')->get();
-        return view('app.carimbos.forms.controle.escalonamento_crise', ['lista_contratadas' => $lista_contratadas,]);
+        return view('app.carimbos.forms.controle.escalonamento_crise', ['lista_contratadas' => $lista_contratadas]);
     }
 
     public function carregarFormUrgente() {
         $lista_contratadas = Contratada::orderBy('nome')->get();
-        return view('app.carimbos.forms.controle.escalonamento_urgente', ['lista_contratadas' => $lista_contratadas,]);
+        return view('app.carimbos.forms.controle.escalonamento_urgente', ['lista_contratadas' => $lista_contratadas]);
     }
 
     public function carregarFormAtualizacaoTelegram() {
-        return view('app.carimbos.forms.controle.atualizacao_telegram');
+        $equipamentos = Equipamento::orderBy('fabricante')->get();
+        $operadoras = Operadora::orderBy('nome')->get();
+        return view('app.carimbos.forms.controle.atualizacao_telegram', [
+            'equipamentos' => $equipamentos,
+            'operadoras' => $operadoras
+        ]);
     }
 
     public function insertCarimboCrise(Request $request) {
