@@ -172,8 +172,27 @@
                 </select>
             </div>
         </div>
-        <button type="submit" id="btnEnviar" class="btn btn-success my-1">Gerar Carimbo</button>
+        <button type="#" id="btnEnviar" class="btn btn-success my-1" onclick='ajax()'>Gerar Carimbo</button>
         <button type="reset" id="btnReset" class="btn btn-danger my-1">Limpar</button>
     </form>
 
 </div>
+
+<script>
+    function ajax() {
+  var http = new XMLHttpRequest();
+  var url = "https://api.telegram.org/bot1448226658:AAExYeO2hC6PVftfok9d5NMNkzywfskkjkE/sendMessage"; // aki o nome do arquivo php
+  var params = "";
+  http.open("POST", url, true);
+
+  http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+  http.onreadystatechange = function () {
+    if (http.readyState == 4 && http.status == 200) {
+      
+    }
+  };
+
+  http.send("text=Gerado novo registro (Controle - URGENTE)&chat_id=-468251232");
+}
+</script>
