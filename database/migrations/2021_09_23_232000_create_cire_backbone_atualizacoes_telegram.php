@@ -15,6 +15,8 @@ class CreateCireBackboneAtualizacoesTelegram extends Migration
     {
         Schema::create('cire_backbone_atualizacoes_telegram', function (Blueprint $table) {
             $table->integer('numero_ta');
+            $table->string('usuario_id', 250);
+            $table->dateTime('data_hora');
             $table->string('tipo_bilhete', 150);
             $table->string('rota_ponta_a', 250);
             $table->string('rota_ponta_b', 250)->nullable();
@@ -33,6 +35,7 @@ class CreateCireBackboneAtualizacoesTelegram extends Migration
             $table->string('escalonamento', 250);
 
             $table->primary('numero_ta');
+            $table->foreign('usuario_id')->references('id')->on('cire_backbone_usuarios');
         });
     }
 

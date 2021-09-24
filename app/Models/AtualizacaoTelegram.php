@@ -13,6 +13,8 @@ class AtualizacaoTelegram extends Model
 
     protected $fillable = [
         'numero_ta',
+        'usuario_id',
+        'data_hora',
         'tipo_bilhete',
         'rota_ponta_a',
         'rota_ponta_b',
