@@ -7,6 +7,7 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\CarimboController;
 use App\Http\Controllers\ControleController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AtualizacaoTelegramController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +49,7 @@ Route::post('/carimbos/controle/formularios/controle_atualizacao_telegram',[Cont
 /* Insert de carimbos */
 Route::post('/carimbos/controle/formularios/controle_crise/insert',[ControleController::class, 'insertCarimboCrise'])->name('insert.controle_crise');
 Route::post('/carimbos/controle/formularios/controle_urgente/insert',[ControleController::class, 'insertCarimboUrgente'])->name('insert.controle_urgente');
+Route::post('/carimbos/controle/formularios/controle_atualizacao_telegram/insert',[AtualizacaoTelegramController::class, 'store'])->name('insert.controle_atualizacao_telegram');
 /* Fim do insert de carimbos */
 
 /* CRUD de usuários */

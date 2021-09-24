@@ -153,5 +153,26 @@
         $('#lista_equipamentos_v2').multiselect();
         $('#lista_operadoras').multiselect();
     });
+</script>
 
+<script type="text/javascript">
+    $(document).on('submit', '#form_atualizacao_telegram', function(event) {
+        event.preventDefault()
+        var dados = $(this).serialize()
+
+        $.ajax({
+            type: 'POST',
+            data: dados,
+            url: '{{route('insert.controle_atualizacao_telegram')}}',
+            success: function(response) {
+                console.log(response)
+            },
+            error: function(xhr) {
+                $.each(xhr.responseJSON.errors, function(key, value) {
+                    alert(value)
+                });
+            },
+        });
+
+    });
 </script>
