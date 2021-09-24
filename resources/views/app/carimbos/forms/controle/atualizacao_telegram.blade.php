@@ -1,18 +1,22 @@
 <div id="form_controle_atualizacao_telegram" class="my-3">
-    PÁGINA EM MANUTENÇÃO<br>
+
     <b>Atualização Telegram</b>
-    <form method="POST" id="carimbo_form" action="#">
+    <form method="POST" id="form_atualizacao_telegram">
         @csrf
 
         <div class="form-inline">
             <input type="text" name="numero_ta" class="form-control" placeholder="Digite o TA" required>
-            <select class="custom-select my-1 mr-sm-2 ml-md-1" name="tipo_bilhete" required>
-                <option value="" disabled selected>Tipo Bilhete</option>
-                <option value="NACIONAL VIVO 1">NACIONAL V1</option>
-                <option value="NACIONAL VIVO 2">NACIONAL V2</option>
-                <option value="REGIONAL VIVO 1">REGIONAL V1</option>
-                <option value="REGIONAL VIVO 2">REGIONAL V2</option>
-            </select>
+            <button type="button" id="pesquisar_ta" class="btn btn-secondary ml-1">Pesquisar</button>
+        </div>
+
+        <div class="form-inline">
+        <select class="custom-select my-1 mr-sm-2" name="tipo_bilhete" required>
+            <option value="" disabled selected>Tipo de Bilhete</option>
+            <option value="NACIONAL VIVO 1">NACIONAL V1</option>
+            <option value="NACIONAL VIVO 2">NACIONAL V2</option>
+            <option value="REGIONAL VIVO 1">REGIONAL V1</option>
+            <option value="REGIONAL VIVO 2">REGIONAL V2</option>
+        </select>
         </div>
 
         <div class="form-inline row mt-1">
@@ -133,6 +137,9 @@
             <label class="col-form-label col-md-auto">Escalonamento:</label>
             <input type="text" class="form-control mr-lg-1 col-lg-5" name="escalonamento" required>
         </div>
+
+        <button type="submit" id="btnEnviar" class="btn btn-success my-1">Gerar Carimbo</button>
+        <button type="reset" id="btnReset" class="btn btn-danger my-1">Limpar</button>
 
     </form>
 

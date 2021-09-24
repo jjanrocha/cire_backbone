@@ -1,0 +1,48 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateCireBackboneAtualizacoesTelegram extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('cire_backbone_atualizacoes_telegram', function (Blueprint $table) {
+            $table->integer('numero_ta');
+            $table->string('tipo_bilhete', 150);
+            $table->string('rota_ponta_a', 250);
+            $table->string('rota_ponta_b', 250)->nullable();
+            $table->string('trecho_ponta_a', 250);
+            $table->string('trecho_ponta_b', 250)->nullable();
+            $table->string('possui_draco', 4)->nullable();
+            $table->string('equipamentos_v1', 250)->nullable();
+            $table->string('equipamentos_v2', 250)->nullable();
+            $table->string('operadoras', 250)->nullable();
+            $table->integer('afetacao_voz')->nullable();
+            $table->integer('afetacao_speedy')->nullable();
+            $table->integer('afetacao_clientes')->nullable();
+            $table->string('lp', 250)->nullable();
+            $table->string('ttmc', 250)->nullable();
+            $table->text('status');
+            $table->string('escalonamento', 250);
+
+            $table->primary('numero_ta');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('cire_backbone_atualizacoes_telegram');
+    }
+}
