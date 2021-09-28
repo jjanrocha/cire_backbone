@@ -90,41 +90,43 @@ class AtualizacaoTelegramController extends Controller
             $carimbo['afetacao'] .= ")";
         }
 
-        //Verificar se há equipamento(s) v2 afetado e como será a exibição no carimbo
-        if($atividade->equipamentos_v2 != "") {
+        //Verificar se há equipamento(s) e/ou redundância(s) V2 afetado(s) e como será a exibição no carimbo
+        if($atividade->equipamentos_v2 != "" || $atividade->redundancias_v2 != "") {
+            
             $lista_equipamentos_v2 = "";
+            $descricao_quantidade_redundancias_v2 = "";
+
+            if($atividade->redundancias_v2 == 1) {
+                $descricao_quantidade_redundancias_v2 = "redundância";
+            } elseif($atividade->redundancias_v2 > 1) {
+                $descricao_quantidade_redundancias_v2 = "redundâncias";
+            }
+
             if($carimbo['afetacao'] == "") {
             $carimbo['afetacao'] .= " VIVO 2 (";
             } else {
                 $carimbo['afetacao'] .= "/VIVO 2 (";
             }
-            foreach($atividade->equipamentos_v2 as $equipamento) {
-                if($lista_equipamentos_v2 != "") {
-                    $lista_equipamentos_v2 .= ', ';
+
+            if($atividade->equipamentos_v2 != "") {
+                foreach($atividade->equipamentos_v2 as $equipamento) {
+                    if($lista_equipamentos_v2 != "") {
+                        $lista_equipamentos_v2 .= ', ';
+                    }
+                    $lista_equipamentos_v2 .= $equipamento;
                 }
-                $lista_equipamentos_v2 .= $equipamento;
             }
+
+            if($lista_equipamentos_v2 != "" && $atividade->redundancias_v2 != "") {
+                $lista_equipamentos_v2 .= ', ';
+                $lista_equipamentos_v2 .= "$atividade->redundancias_v2 $descricao_quantidade_redundancias_v2";
+            } elseif($lista_equipamentos_v2 == "" && $atividade->redundancias_v2 != "") {
+                $lista_equipamentos_v2 .= "$atividade->redundancias_v2 $descricao_quantidade_redundancias_v2";
+            }
+
             $carimbo['afetacao'] .= $lista_equipamentos_v2;
+
             $carimbo['afetacao'] .= ")";
-        }
-
-
-        //Verificar se há redundancia(s) v2 afetadas e como será a exibição no carimbo
-        if($atividade->redundancias_v2 != "") {
-
-            $descricao_quantidade_redundancias_v2 = "";
-
-            if($atividade->redundancias_v2 == 1) {
-                $descricao_quantidade_redundancias_v2 = "redundância";
-            } else {
-                $descricao_quantidade_redundancias_v2 = "redundâncias";
-            }
-
-            if($carimbo['afetacao'] == "") {
-            $carimbo['afetacao'] .= " VIVO 2 ($atividade->redundancias_v2 $descricao_quantidade_redundancias_v2)";
-            } else {
-                $carimbo['afetacao'] .= "/VIVO 2 ($atividade->redundancias_v2 $descricao_quantidade_redundancias_v2)";
-            }
         }
 
         //Verificar se há operadora(s) afetada(s) e como será a exibição no carimbo
