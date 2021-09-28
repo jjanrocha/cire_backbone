@@ -37,6 +37,7 @@ class AtualizacaoTelegramController extends Controller
         $atividade->afetacao_speedy = $request->afetacao_speedy;
         $atividade->afetacao_clientes = $request->afetacao_clientes;
         $atividade->afetacao_fttx = $request->afetacao_fttx;
+        $atividade->afetacao_iptv = $request->afetacao_iptv;
         $atividade->lp = $request->lp;
         $atividade->horario_acionamento = $request->horario_acionamento;
         $atividade->ttmc = $request->ttmc;
@@ -113,7 +114,7 @@ class AtualizacaoTelegramController extends Controller
 
             $descricao_quantidade_redundancias_v2 = "";
 
-            if($descricao_quantidade_redundancias_v2 == "1") {
+            if($atividade->redundancias_v2 == 1) {
                 $descricao_quantidade_redundancias_v2 = "redundância";
             } else {
                 $descricao_quantidade_redundancias_v2 = "redundâncias";

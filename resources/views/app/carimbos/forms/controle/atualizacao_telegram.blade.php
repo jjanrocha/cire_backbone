@@ -87,7 +87,7 @@
 
         <div class="form-group row mt-2">
             <label class="col-form-label col-md-auto">Redundância(s) V2:</label>
-            <input type="text" class="form-control mr-lg-1 col-lg-5" name="redundancias_v2" placeholder="Digite a quantidade">
+            <input type="text" class="form-control mr-lg-1 col-lg-3" name="redundancias_v2" placeholder="Digite a quantidade">
         </div>
 
         <br>
@@ -117,6 +117,7 @@
             <input type="text" name="afetacao_speedy" class="form-control mt-2 mr-1 col-md-2" placeholder="Speedy">
             <input type="text" name="afetacao_clientes" class="form-control mt-2 mr-1 col-md-2" placeholder="Clientes">
             <input type="text" name="afetacao_fttx" class="form-control mt-2 mr-1 col-md-2" placeholder="FTTx">
+            <input type="text" name="afetacao_iptv" class="form-control mt-2 mr-1 col-md-2" placeholder="IPTV">
         </div>
 
         <div class="form-group form-inline mt-2">

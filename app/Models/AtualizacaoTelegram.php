@@ -30,6 +30,7 @@ class AtualizacaoTelegram extends Model
         'afetacao_speedy',
         'afetacao_clientes',
         'afetacao_fttx',
+        'afetacao_iptv',
         'lp',
         'horario_acionamento',
         'ttmc',

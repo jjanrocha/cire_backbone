@@ -26,13 +26,14 @@ class CreateCireBackboneAtualizacoesTelegram extends Migration
             $table->string('possui_draco', 4)->nullable();
             $table->string('equipamentos_v1', 250)->nullable();
             $table->string('equipamentos_v2', 250)->nullable();
-            $table->string('redundancias_v2', 250)->nullable();
+            $table->integer('redundancias_v2')->nullable();
             $table->string('operadoras', 250)->nullable();
             $table->integer('afetacao_erbs')->nullable();
             $table->integer('afetacao_voz')->nullable();
             $table->integer('afetacao_speedy')->nullable();
             $table->integer('afetacao_clientes')->nullable();
             $table->integer('afetacao_fttx')->nullable();
+            $table->integer('afetacao_iptv')->nullable();
             $table->string('lp', 250)->nullable();
             $table->string('horario_acionamento', 250);
             $table->string('ttmc', 250)->nullable();
