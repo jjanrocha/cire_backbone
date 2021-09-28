@@ -107,6 +107,25 @@ class AtualizacaoTelegramController extends Controller
             $carimbo['afetacao'] .= ")";
         }
 
+
+        //Verificar se há redundancia(s) v2 afetadas e como será a exibição no carimbo
+        if($atividade->redundancias_v2 != "") {
+
+            $descricao_quantidade_redundancias_v2 = "";
+
+            if($descricao_quantidade_redundancias_v2 == "1") {
+                $descricao_quantidade_redundancias_v2 = "redundância";
+            } else {
+                $descricao_quantidade_redundancias_v2 = "redundâncias";
+            }
+
+            if($carimbo['afetacao'] == "") {
+            $carimbo['afetacao'] .= " VIVO 2 ($atividade->redundancias_v2 $descricao_quantidade_redundancias_v2)";
+            } else {
+                $carimbo['afetacao'] .= "/VIVO 2 ($atividade->redundancias_v2 $descricao_quantidade_redundancias_v2)";
+            }
+        }
+
         //Verificar se há operadora(s) afetada(s) e como será a exibição no carimbo
         if($atividade->operadoras != "") {
             $lista_operadoras = "";

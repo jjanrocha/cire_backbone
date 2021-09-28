@@ -87,7 +87,7 @@
 
         <div class="form-group row mt-2">
             <label class="col-form-label col-md-auto">Redundância(s) V2:</label>
-            <input type="text" class="form-control mr-lg-1 col-lg-5" name="redundancias_v2" placeholder="Digite a quantidade" required>
+            <input type="text" class="form-control mr-lg-1 col-lg-5" name="redundancias_v2" placeholder="Digite a quantidade">
         </div>
 
         <br>
