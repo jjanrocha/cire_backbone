@@ -28,9 +28,17 @@ class AtualizacaoTelegram extends Model
         'afetacao_speedy',
         'afetacao_clientes',
         'lp',
+        'horario_acionamento',
         'ttmc',
         'status',
         'escalonamento'
+    ];
+
+    //Fazer com que o eloquent entenda que os campos deverão ser tratados como array
+    protected $casts = [
+        'equipamentos_v1' => 'array',
+        'equipamentos_v2' => 'array',
+        'operadoras' => 'array',
     ];
 
     public $timestamps = false;

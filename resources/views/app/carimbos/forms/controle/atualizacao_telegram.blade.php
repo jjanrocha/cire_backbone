@@ -6,7 +6,7 @@
 
         <div class="form-inline">
             <input type="text" name="numero_ta" class="form-control" placeholder="Digite o TA" required>
-            <button type="button" id="pesquisar_ta" class="btn btn-secondary ml-1">Pesquisar</button>
+            <button type="button" id="pesquisar_ta" class="btn btn-secondary ml-1">Carregar</button>
         </div>
 
         <div class="form-inline">
@@ -36,7 +36,7 @@
         </div>
 
         <div class="form-check mt-2">
-            <input class="form-check-input" type="checkbox" name="draco" value="possui_draco" id="possui_draco">
+            <input class="form-check-input" type="checkbox" name="possui_draco" value="sim" id="possui_draco">
             <label class="form-check-label" for="possui_draco">
                 Possui DRACO afetado
             </label>
@@ -60,7 +60,7 @@
                 <button type="button" id="lista_equipamentos_v1_leftAll" class="btn btn-block"><i class="fas fa-angle-double-left"></i></button>
             </div>
             <div class="col-md-4">
-                <select name="to[]" id="lista_equipamentos_v1_to" class="form-control" size="8" multiple="multiple"></select>
+                <select name="lista_equipamentos_v1_to[]" id="lista_equipamentos_v1_to" class="form-control" size="8" multiple="multiple"></select>
             </div>
         </div>
 
@@ -81,8 +81,13 @@
                 <button type="button" id="lista_equipamentos_v2_leftAll" class="btn btn-block"><i class="fas fa-angle-double-left"></i></button>
             </div>
             <div class="col-md-4">
-                <select name="to[]" id="lista_equipamentos_v2_to" class="form-control" size="8" multiple="multiple"></select>
+                <select name="lista_equipamentos_v2_to[]" id="lista_equipamentos_v2_to" class="form-control" size="8" multiple="multiple"></select>
             </div>
+        </div>
+
+        <div class="form-group row mt-2">
+            <label class="col-form-label col-md-auto">Redundância(s) V2:</label>
+            <input type="text" class="form-control mr-lg-1 col-lg-5" name="redundancias_v2" placeholder="Digite a quantidade" required>
         </div>
 
         <br>
@@ -102,15 +107,16 @@
                 <button type="button" id="lista_operadoras_leftAll" class="btn btn-block"><i class="fas fa-angle-double-left"></i></button>
             </div>
             <div class="col-md-4">
-                <select name="to[]" id="lista_operadoras_to" class="form-control" size="8" multiple="multiple"></select>
+                <select name="lista_operadoras_to[]" id="lista_operadoras_to" class="form-control" size="8" multiple="multiple"></select>
             </div>
         </div>
 
         <div class="form-inline">
+            <input type="text" name="afetacao_erbs" class="form-control mt-2 mr-1 col-md-2" placeholder="ERB">
             <input type="text" name="afetacao_voz" class="form-control mt-2 mr-1 col-md-2" placeholder="Voz">
             <input type="text" name="afetacao_speedy" class="form-control mt-2 mr-1 col-md-2" placeholder="Speedy">
             <input type="text" name="afetacao_clientes" class="form-control mt-2 mr-1 col-md-2" placeholder="Clientes">
-            <i class="fas fa-question-circle" title='Caso haja afetação de Voz/Speedy/Clientes, digite a quantidade no campo correspondente.'></i>
+            <input type="text" name="afetacao_fttx" class="form-control mt-2 mr-1 col-md-2" placeholder="FTTx">
         </div>
 
         <div class="form-group form-inline mt-2">
@@ -164,8 +170,23 @@
             type: 'POST',
             data: dados,
             url: '{{route('insert.controle_atualizacao_telegram')}}',
+            beforeSend: function() {
+                $("#btnEnviar").hide();
+            },
             success: function(response) {
-                console.log(response)
+                $('input[name=tipo_atividade_id]').prop('checked', false);
+                var textarea_carimbo = document.createElement("TEXTAREA");
+                textarea_carimbo.className = "form-control col-md-8 mt-1";
+                textarea_carimbo.rows = 27;
+                textarea_carimbo.readOnly = true;
+                textarea_carimbo.innerHTML =(
+                response.informacoes_basicas
+                +response.rota
+                +response.trecho_localidade+
+                "AFETAÇÃO:"
+                +response.afetacao
+                );
+                $("#conteudo").html(textarea_carimbo);
             },
             error: function(xhr) {
                 $.each(xhr.responseJSON.errors, function(key, value) {
