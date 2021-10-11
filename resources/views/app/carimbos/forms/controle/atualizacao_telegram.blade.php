@@ -130,14 +130,37 @@
             <input type="datetime-local" class="form-control mr-lg-1 col-lg-3" name="horario_acionamento" id="horario_acionamento" required>
         </div>
 
-        <div class="form-group form-inline mt-2">
-            <input type="text" name="ttmc" class="form-control mt-2 col-md-10" placeholder="TTMC">
-            <i class="fas fa-question-circle ml-lg-1" title='Caso haja TTMC envolvido, descreva-o no campo ao lado.'></i>
+        <div class="form-group row mt-2">
+            <label class="col-form-label col-md-auto">TTMC:</label>
+            <input type="text" class="form-control mr-lg-1 col-lg-2" name="ttmc_numero" id="ttmc_numero" placeholder="Número">
+            <select class="form-control mr-lg-1 col-lg-3" name="ttmc_tipo" id="ttmc_tipo">
+                <option value="" selected disabled>Tipo</option>
+                <option value="Backbone Nacional">Backbone Nacional</option>
+                <option value="Backbone Regional">Backbone Regional</option>
+            </select>
+            <select class="form-control col-lg-3" name="ttmc_rede" id="ttmc_rede">
+                <option value="" selected disabled>Rede</option>
+                <option value="Rede Móvel">Rede Móvel</option>
+                <option value="Rede Fixa">Rede Fixa</option>
+            </select>
         </div>
 
         <div class="mt-2">
-            <label class="col-form-label">Status:</label>
-            <textarea class="form-control col-md-10" rows="6" name="status" required></textarea>
+            <div class="form-group row">
+                <label class="col-form-label col-md-auto">Status:</label>
+                <select class="custom-select col-lg-5" name="tipo_status" id="tipo_status" required>
+                    <option value="" disabled selected>Tipo de Status</option>
+                    <option value="agendamento">Agendamento</option>
+                    <option value="em_deslocamento">Em deslocamento para medições</option>
+                    <option value="percorrendo_rota_localizar_falha">Percorrendo rota para localizar falha</option>
+                    <option value="percorrendo_rota_retirar_atenuacao">Percorrendo rota para retirar atenuações</option>
+                    <option value="recuperando_falha">Recuperando falha</option>
+                    <option value="testes">Testes</option>
+                    <option value="tramitacao_outra_area">Tramitação (outra área)</option>
+                    <option value="tramitacao_area_vivo">Tramitação (área Vivo)</option>
+                </select>
+            </div>
+            <textarea class="form-control col-md-10" rows="8" name="status" id="status" required>STATUS: </textarea>
         </div>
 
         <div class="form-group row mt-2">
@@ -180,12 +203,18 @@
                 textarea_carimbo.className = "form-control col-md-8 mt-1";
                 textarea_carimbo.rows = 27;
                 textarea_carimbo.readOnly = true;
-                textarea_carimbo.innerHTML =(
-                response.informacoes_basicas
-                +response.rota
-                +response.trecho_localidade+
-                "AFETAÇÃO:"
-                +response.afetacao
+                textarea_carimbo.innerHTML = (
+                    response.informacoes_basicas +
+                    response.rota +
+                    response.trecho_localidade +
+                    "AFETAÇÃO:" +
+                    response.afetacao +
+                    "ACIONAMENTO: " +
+                    response.horario_acionamento +
+                    response.ttmc +
+                    response.status +
+                    response.escalonamento +
+                    response.analista_cire
                 );
                 $("#conteudo").html(textarea_carimbo);
             },

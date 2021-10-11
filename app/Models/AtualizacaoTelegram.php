@@ -33,9 +33,12 @@ class AtualizacaoTelegram extends Model
         'afetacao_iptv',
         'lp',
         'horario_acionamento',
-        'ttmc',
+        'ttmc_numero',
+        'ttmc_tipo',
+        'ttmc_rede',
         'status',
-        'escalonamento'
+        'escalonamento',
+        'tipo_status'
     ];
 
     //Fazer com que o eloquent entenda que os campos deverão ser tratados como array

@@ -52,6 +52,10 @@ Route::post('/carimbos/controle/formularios/controle_urgente/insert',[ControleCo
 Route::post('/carimbos/controle/formularios/controle_atualizacao_telegram/insert',[AtualizacaoTelegramController::class, 'store'])->name('insert.controle_atualizacao_telegram');
 /* Fim do insert de carimbos */
 
+/** Carregar carimbo Atualização Telegram (controle) */
+Route::post('/carimbos/controle/formularios/controle_atualizacao_telegram/read', [AtualizacaoTelegramController::class, 'carregarDados'])->name('read.controle_atualizacao_telegram');
+/** Fim carregar carimbo Atualização Telegram (controle)*/
+
 /* CRUD de usuários */
 Route::get('/usuarios', [UsuarioController::class, 'index'])->name('usuarios.index')->middleware('auth.admin');
 Route::post('/usuarios/lista_usuarios', [UsuarioController::class, 'listarUsuarios'])->name('usuarios.listar')->middleware('auth.admin');
