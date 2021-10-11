@@ -176,6 +176,13 @@
 </div>
 
 <script type="text/javascript" src="{{asset('js/multiselect.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/jquery.mask.min.js')}}"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#ttmc_numero').mask('0.000/0000');
+    });
+</script>
 
 <script type="text/javascript">
     jQuery(document).ready(function($) {
